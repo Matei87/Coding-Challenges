@@ -1,5 +1,4 @@
 "use strict";
-//console.log("Hello");
 
 // CHALLENGE 1
 
@@ -10,6 +9,7 @@ var palidrome = (string) => {
     return sanitazedString === sanitazedString.split('').reverse().join('');
 }
 console.log(palidrome('   iyeLLeYI'));
+
 
 
 
