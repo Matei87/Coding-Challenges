@@ -8,7 +8,7 @@ var palidrome = (string) => {
     var sanitazedString = string.toLowerCase().trim();
     return sanitazedString === sanitazedString.split('').reverse().join('');
 }
-console.log(palidrome('   iyeLLeYI'));
+console.log('palidrome', palidrome('   iyeLLeYI'));
 
 
 
@@ -29,7 +29,7 @@ var numereLipsa = (arr) => {
     }
     return missing;
 }
-console.log(numereLipsa([0, 2, 5, 9, 11]));
+console.log('numere lipsa', numereLipsa([0, 2, 5, 9, 11]));
 
 
 
@@ -41,7 +41,7 @@ var frecventa = (arr) => {
     let count = {};
     for (let i = 0; i < arr.length; i++) {
         let num = arr[i];
-        console.log(i, num, count);
+        //console.log(i, num, count);
         count[arr[i]] = count[arr[i]] ? count[arr[i]] + 1 : 1;
     }
 
@@ -58,7 +58,8 @@ var frecventa = (arr) => {
     // }, 0);
     return count;
 }
-console.log(frecventa([7, 7, 2, 1, 3, 4]));
+console.log('frecventa', frecventa([7, 7, 2, 1, 3, 4]));
+
 
 
 
@@ -66,6 +67,38 @@ console.log(frecventa([7, 7, 2, 1, 3, 4]));
 
 //Remove duplicates from an array
 let duplicates = (arr) => {
+    let b = [];
+    //first solution
+    // for (let i = 0; i < arr.length; i++) {
+    //     console.log(arr, i, arr[i], b.indexOf(arr[i]));
+    //     if (b.indexOf(arr[i]) === -1) {
+    //         b.push(arr[i]);
+    //     }
+    // }
+    // return b;
 
+    //second solution
+    // arr.sort();
+    // let temp;
+    // for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i] !== temp) {
+    //         b.push(arr[i]);
+    //         temp = arr[i];
+    //     }
+    // }
+    // console.log(b);
+    // return temp;
+
+    //thrird solution
+    // let hashtable = {};
+    // for (let i of arr) {
+    //     hashtable[i] = 1;
+    //     console.log(i, arr, hashtable);
+    // }
+    // b = Array.from(Object.keys(hashtable), Number);
+    // return b;
+
+    //forth solution
+    return [... new Set(arr)];
 }
-console.log(duplicates([1, 2, 5, 1, 1, 8]));
+console.log('duplicates', duplicates([1, 2, 5, 1, 1, 8]));
