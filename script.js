@@ -102,3 +102,163 @@ let duplicates = (arr) => {
     return [... new Set(arr)];
 }
 console.log('duplicates', duplicates([1, 2, 5, 1, 1, 8]));
+
+
+
+
+// CHALLENGE 5
+
+//Power Calculator
+//Create a function that takes voltage and current and returns the calculated power.
+
+// Examples
+// circuitPower(230, 10) ➞ 2300
+// circuitPower(110, 3) ➞ 330
+// circuitPower(480, 20) ➞ 9600
+
+const circuitPower = (voltage, current) => {
+    return current * voltage;
+}
+console.log('circuitPower', circuitPower(230, 10));
+
+
+
+
+
+// CHALLENGE 6
+
+//Upvotes vs Downvotes
+// Given an object containing counts of both upvotes and downvotes, return what vote count should be displayed.
+//This is calculated by subtracting the number of downvotes from upvotes.
+
+// getVoteCount({ upvotes: 13, downvotes: 0 }) ➞ 13
+// getVoteCount({ upvotes: 2, downvotes: 33 }) ➞ -31
+// getVoteCount({ upvotes: 132, downvotes: 132 }) ➞ 0
+
+const getVoteCount = (votes) => {
+    // for (let i in votes) {
+    //     console.log(votes['upvotes'] - votes['downvotes']);
+    // }
+    return (Object.values(votes)[0] - Object.values(votes)[1]);
+}
+console.log('getVoteCount', getVoteCount({ upvotes: 1, downvotes: 4 }));
+
+
+
+
+// CHALLENGE 7
+
+// Format I: Template String
+// Write a template string according to the following example:
+// const a = "John";
+// const b = "Joe";
+// const c = "Jack";
+// const template = "your template string" ➞ "Their names were:  John,  Joe  and  Jack."
+// Tips
+
+// A template string is a string that uses Dollar sign and curly braces inside a backticks ${} as a placeholder that can then be formatted:
+
+// const name = John;
+// `hello, my name is ${name}.` ➞ "hello, my name is John."
+
+// You can put an expression inside the curly braces :
+
+// const age = 12;
+// `Hello, you are ${age < 18 ? 'young' : 'old'}.` ➞ "Hello, you are young."
+
+// modify the template variable to be a template string 
+const format = (a, b, c) => {
+    // the result string must give: "Their names were: a, b and c."
+    return `Their names were: ${a}, ${b} and ${c}.`;
+}
+console.log('format', format('John', 'Joe', 'Jack'));
+
+
+
+
+// CHALLENGE 8
+
+// Check if String Ending Matches Second String
+// Create a function that takes two strings and returns true if the first string ends with the second string; otherwise return false.
+// Examples
+
+// checkEnding("abc", "bc") ➞ true
+// checkEnding("abc", "d") ➞ false
+// checkEnding("samurai", "zi") ➞ false
+// checkEnding("feminine", "nine") ➞ true
+// checkEnding("convention", "tio") ➞ false
+
+// Notes
+// All test cases are valid one word strings.
+
+const checkEnding = (str1, str2) => {
+    return str1.substr(str1.length - str2.length) === str2 ? true : false;
+    //return str1.endsWith(str2) ? true : false;
+}
+console.log('checkEnding', checkEnding('feminine', 'nine'));
+
+
+
+
+// CHALLENGE 9
+
+// Write a function that takes an integer and returns a string with the given number of "a"s in Edabit.
+
+// Examples
+// howManyTimes(5) ➞ "Edaaaaabit"
+// howManyTimes(0) ➞ "Edbit"
+// howManyTimes(12) ➞ "Edaaaaaaaaaaaabit"
+// Notes
+//     The string must start with "Ed" and end with "bit".
+//     You'll only be given integers as test input.
+
+var howManyTimes = (num) => {
+    return `Ed${'a'.repeat(num)}bit`;
+}
+console.log('howManyTimes', howManyTimes(1));
+
+
+
+
+// CHALLENGE 10
+
+// Cube the Square Root
+// Create a function that takes a number as an argument and returns the square root of that number cubed.
+
+// Examples
+// cubeSquareRoot(81) ➞ 729
+// cubeSquareRoot(1646089) ➞ 2111932187
+// cubeSquareRoot(695556) ➞ 580093704
+
+// Notes
+// All numbers will evenly square root, so don't worry about decimal numbers.
+
+let cubeSquareRoot = (num) => {
+    return num * Math.sqrt(num);
+}
+console.log('cubeSquareRoot', cubeSquareRoot(1646089));
+
+
+
+
+// CHALLENGE 11
+
+// Smash Factor
+
+// Smash factor is a term in golf that relates to the amount of energy transferred from the club head to the golf ball.
+// The formula for calculating smash factor is ball speed divided by club speed.
+// Create a function that takes ball speed bs and club speed cs as arguments and returns the smash factor to the nearest hundredth.
+// Examples
+
+// smashFactor(139.4, 93.8) ➞ 1.49
+// smashFactor(181.2, 124.5) ➞ 1.46
+// smashFactor(154.7, 104.3) ➞ 1.48
+// Notes
+//     Remember to round to the nearest hundredth.
+//     All values will be valid (so no dividing by zero).
+
+
+let smashFactor = (bs, cs) => {
+    return Number((bs / cs).toFixed(2));
+}
+console.log('smashFactor', smashFactor(154.7, 104.3));
