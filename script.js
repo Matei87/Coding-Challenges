@@ -262,3 +262,68 @@ let smashFactor = (bs, cs) => {
     return Number((bs / cs).toFixed(2));
 }
 console.log('smashFactor', smashFactor(154.7, 104.3));
+
+
+
+
+// CHALLENGE 12
+// Mini-Max Sum
+// Given five positive integers, find the minimum and maximum values that can be calculated by summing exactly four of the five integers.
+// Then print the respective minimum and maximum values as a single line of two space-separated long integers.
+//Examples
+// miniMaxSum([7, 69, 2, 221, 8974]);
+// miniMaxSum([1, 2, 3, 4, 5]);
+const miniMaxSum = (arr) => {
+    let total = arr.reduce((acc, number) => acc + number, 0);
+    let maxim = total - Math.min(...arr);
+    let minim = total - Math.max(...arr);
+    console.log('miniMaxSum', minim, maxim);
+}
+miniMaxSum([1, 2, 3, 4, 5]);
+
+
+
+
+// CHALLENGE 13
+// You are in charge of the cake for a child's birthday.
+// You have decided the cake will have one candle for each year of their total age.
+// They will only be able to blow out the tallest of the candles.
+// Count how many candles are tallest. 
+const birthdayCakeCandles = (candles) => {
+    // Write your code here
+    let max = Math.max(...candles);
+    let big = [];
+    //return candles.filter(candy => max === candy).length;
+    for (let i = 0; i < [...candles].length; i++) {
+        if (max === candles[i]) {
+            big.push(candles[i]);
+        }
+    }
+    console.log('birthdayCakeCandles', big.length);
+}
+birthdayCakeCandles([3, 1, 2, 3]);
+
+
+
+
+// CHALLENGE 14
+// Time Conversion
+// Given a time in 12-hour AM/PM format, convert it to military (24-hour) time.
+// Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
+// - 12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock.
+const timeConversion = (s) => {
+    if (s.slice(-2) === "AM") {
+        if (s.slice(0, 2) == '12') {
+            return ("00" + s.slice(2, -2))
+        }
+        return (s.slice(0, -2))
+    } else {
+        if (s.slice(0, 2) == '12') {
+            return (s.slice(0, -2))
+        }
+        let firstS = Number(s.slice(0, 2)) + 12;
+        let secondS = s.slice(2, -2);
+        return (firstS + secondS);
+    }
+}
+console.log('timeConversion', timeConversion('12:05:45AM'));
