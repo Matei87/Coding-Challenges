@@ -1,7 +1,6 @@
 "use strict";
 
 // CHALLENGE 1
-
 // PALIDROME
 // Given a string determine whether it is a palidrome
 var palidrome = (string) => {
@@ -14,7 +13,6 @@ console.log('palidrome', palidrome('   iyeLLeYI'));
 
 
 // CHALLENGE 2
-
 //MISSING NUMBERS
 //Given an array find the missing numbers and display them
 var numereLipsa = (arr) => {
@@ -34,7 +32,6 @@ console.log('numere lipsa', numereLipsa([0, 2, 5, 9, 11]));
 
 
 // CHALLENGE 3
-
 //Count occurences in an array
 var frecventa = (arr) => {
     //first solution
@@ -64,7 +61,6 @@ console.log('frecventa', frecventa([7, 7, 2, 1, 3, 4]));
 
 
 // CHALLENGE 4
-
 //Remove duplicates from an array
 let duplicates = (arr) => {
     let b = [];
@@ -107,7 +103,6 @@ console.log('duplicates', duplicates([1, 2, 5, 1, 1, 8]));
 
 
 // CHALLENGE 5
-
 //Power Calculator
 //Create a function that takes voltage and current and returns the calculated power.
 
@@ -126,7 +121,6 @@ console.log('circuitPower', circuitPower(230, 10));
 
 
 // CHALLENGE 6
-
 //Upvotes vs Downvotes
 // Given an object containing counts of both upvotes and downvotes, return what vote count should be displayed.
 //This is calculated by subtracting the number of downvotes from upvotes.
@@ -147,7 +141,6 @@ console.log('getVoteCount', getVoteCount({ upvotes: 1, downvotes: 4 }));
 
 
 // CHALLENGE 7
-
 // Format I: Template String
 // Write a template string according to the following example:
 // const a = "John";
@@ -177,7 +170,6 @@ console.log('format', format('John', 'Joe', 'Jack'));
 
 
 // CHALLENGE 8
-
 // Check if String Ending Matches Second String
 // Create a function that takes two strings and returns true if the first string ends with the second string; otherwise return false.
 // Examples
@@ -201,7 +193,6 @@ console.log('checkEnding', checkEnding('feminine', 'nine'));
 
 
 // CHALLENGE 9
-
 // Write a function that takes an integer and returns a string with the given number of "a"s in Edabit.
 
 // Examples
@@ -221,7 +212,6 @@ console.log('howManyTimes', howManyTimes(1));
 
 
 // CHALLENGE 10
-
 // Cube the Square Root
 // Create a function that takes a number as an argument and returns the square root of that number cubed.
 
@@ -242,7 +232,6 @@ console.log('cubeSquareRoot', cubeSquareRoot(1646089));
 
 
 // CHALLENGE 11
-
 // Smash Factor
 
 // Smash factor is a term in golf that relates to the amount of energy transferred from the club head to the golf ball.
@@ -327,3 +316,25 @@ const timeConversion = (s) => {
     }
 }
 console.log('timeConversion', timeConversion('12:05:45AM'));
+
+
+
+
+// CHALLENGE 15
+//Two sum
+//Given an array of numbers and an target return an array with the numbers that
+//have the sum equal with target
+const twoSum = (arr, target) => {
+    for (let i = 0; i < arr.length - 1; i++) {
+        let firstNumber = arr[i];
+        for (let j = i + 1; j < arr.length; j++) {
+            let secondNUmber = arr[j];
+            if (firstNumber + secondNUmber === target) {
+                return [firstNumber, secondNUmber];
+            }
+        }
+        console.log(arr[i]);
+    }
+    console.log(arr, target);
+}
+console.log('twoSum', twoSum([4, -1, 0, 1, 5, 6, 8, 10], 9));
