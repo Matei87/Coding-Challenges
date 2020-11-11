@@ -374,5 +374,69 @@ class Person {
 let p1 = new Person("Samuel", 24);
 let p2 = new Person("Joel", 36);
 let p3 = new Person("Lily", 24);
-console.log(p1, p2, p1.compareAge(p2));
-console.log(p2.compareAge(p1), p1.compareAge(p3));
+console.log('compareAge', p2.compareAge(p1), p1.compareAge(p3));
+
+
+
+
+// CHALLENGE 17
+// Return Last Index
+// Create a function that returns the last value of the last item in an array or string.
+
+// Examples
+// lastItem([0, 4, 19, 34, 50, -9, 2]) ➞ 2
+// lastItem("The quick brown fox jumped over the lazy dog") ➞ "g"
+// lastItem([]) ➞ undefined
+
+// Notes
+
+//     Arrays/strings will be of varying size.
+//     Return undefined if array/string is empty.
+const lastItem = (input) => {
+    return input[input.length - 1];
+}
+console.log('lastItem', lastItem([]));
+
+
+
+
+// CHALLENGE 18
+// Shuffle the Name
+// Create a function that accepts a string (of a person's first and last name) and returns a string with the first and last name swapped.
+
+// Examples
+// nameShuffle("Donald Trump") ➞ "Trump Donald"
+// nameShuffle("Rosie O'Donnell") ➞ "O'Donnell Rosie"
+// nameShuffle("Seymour Butts") ➞ "Butts Seymour"
+
+// Notes
+
+//     There will be exactly one space between the first and last name.
+//     If you get stuck on a challenge, find help in the Resources tab.
+//     If you're really stuck, unlock solutions in the Solutions tab.
+const nameShuffle = (str) => {
+    return str.split(' ').reverse().join(' ');
+}
+console.log('nameShuffle', nameShuffle("Rosie O'Donnell"));
+
+
+
+
+// CHALLENGE 19
+// Capture the Rook
+// Write a function that returns true if two rooks can attack each other, and false otherwise.
+
+// Examples
+// canCapture(["A8", "E8"]) ➞ true
+// canCapture(["A1", "B2"]) ➞ false
+// canCapture(["H4", "H3"]) ➞ true
+// canCapture(["F5", "C8"]) ➞ false
+
+// Notes
+
+//     Assume no blocking pieces.
+//     Two rooks can attack each other if they share the same row (letter) or column (number).
+const canCapture = ([yourRook, opponentsRook]) => {
+    return yourRook[0] === opponentsRook[0] || yourRook[1] === opponentsRook[1] ? true : false;
+}
+console.log('canCapture', canCapture(["F5", "C8"]));
