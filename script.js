@@ -362,7 +362,17 @@ class Person {
     }
 
     compareAge(other) {
-        // Write code here!
-
+        if (other.age < this.age) {
+            return `${other.name} is younger than me.`
+        } else if (other.age > this.age) {
+            return `${other.name} is older than me.`
+        } else {
+            return `${other.name} is the same age as me.`
+        }
     }
 }
+let p1 = new Person("Samuel", 24);
+let p2 = new Person("Joel", 36);
+let p3 = new Person("Lily", 24);
+console.log(p1, p2, p1.compareAge(p2));
+console.log(p2.compareAge(p1), p1.compareAge(p3));
