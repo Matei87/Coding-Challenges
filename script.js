@@ -440,3 +440,24 @@ const canCapture = ([yourRook, opponentsRook]) => {
     return yourRook[0] === opponentsRook[0] || yourRook[1] === opponentsRook[1] ? true : false;
 }
 console.log('canCapture', canCapture(["F5", "C8"]));
+
+
+
+// CHALLENGE 20
+// Create a function (or write a script in Shell) that takes an integer as an argument and returns "Even"
+// for even numbers or "Odd" for odd numbers.
+const evenOrOdd = (number) => {
+    return number % 2 === 0 ? 'Even' : 'Odd';
+}
+console.log('evenOrOdd', evenOrOdd(2));
+
+
+
+// CHALLENGE 21
+// Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in
+// this way until a single-digit number is produced. The input will be a non-negative integer.
+
+const digital_root = (n) => {
+    return ((n - 1) % 9) + 1;
+}
+console.log('digital_root', digital_root(156));
