@@ -461,3 +461,27 @@ const digital_root = (n) => {
     return ((n - 1) % 9) + 1;
 }
 console.log('digital_root', digital_root(156));
+
+
+
+// CHALLENGE 22
+// Usually when you buy something, you're asked whether your credit card number, phone number or answer to
+// your most secret question is still correct. However, since someone could look over your shoulder, you don't
+// want that shown on your screen. Instead, we mask it.
+// Your task is to write a function maskify, which changes all but the last four characters into '#'.
+// EXAMPLES
+// maskify("4556364607935616") == "############5616"
+// maskify(     "64607935616") ==      "#######5616"
+// maskify(               "1") ==                "1"
+// maskify(                "") ==                 ""
+
+// // "What was the name of your first pet?"
+// maskify("Skippy")                                   == "##ippy"
+// maskify("Nananananananananananananananana Batman!") == "####################################man!"
+
+// return masked string
+const maskify = (cc) => {
+    let lengthMinus4 = cc.slice(0, -4).split('').map(a => '#').join('').concat(cc.slice(-4, cc.length));
+    return lengthMinus4;
+}
+console.log('maskify', maskify('9999999999999'));
