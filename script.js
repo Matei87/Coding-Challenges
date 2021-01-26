@@ -501,7 +501,7 @@ console.log('numberToPower', numberToPower(2, 3));
 
 
 
-// CHALLENGE 23
+// CHALLENGE 24
 // Define a function that takes one integer argument and returns logical value true or false
 // depending on if the integer is a prime.
 // Per Wikipedia, a prime number (or a prime) is a natural number greater than 1 that has no
@@ -514,3 +514,31 @@ const isPrime = (num) => {
     return num > 1;
 }
 console.log('isPrime', isPrime(4));
+
+
+
+// CHALLENGE 25
+// likes [] -- must be "no one likes this"
+// likes ["Peter"] -- must be "Peter likes this"
+// likes ["Jacob", "Alex"] -- must be "Jacob and Alex like this"
+// likes ["Max", "John", "Mark"] -- must be "Max, John and Mark like this"
+// likes ["Alex", "Jacob", "Mark", "Max"] -- must be "Alex, Jacob and 2 others like this"
+const likes = (names) => {
+    // TODO
+    let a = []
+    for (let i = 0; i < names.length; i++) {
+        a.push(names[i])
+    }
+    if (a.length === 0) {
+        return 'no one likes this'
+    } else if (a.length === 1) {
+        return `${a} likes this`
+    } else if (a.length === 2) {
+        return `${a[0]} and ${a[1]} like this`
+    } else if (a.length === 3) {
+        return `${a[0]}, ${a[1]} and ${a[2]} like this`
+    } else if (a.length >= 4) {
+        return `${a[0]}, ${a[1]} and ${a.length - 2} others like this`
+    }
+}
+console.log('likes', likes(['Alex', 'Jacob', 'Mark', 'Max', 'Ionut']));
