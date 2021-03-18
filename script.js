@@ -542,3 +542,342 @@ const likes = (names) => {
     }
 }
 console.log('likes', likes(['Alex', 'Jacob', 'Mark', 'Max', 'Ionut']));
+
+
+
+// CHALLENGE 26
+// Create a function which returns the number of true values there are in an array.
+// countTrue([true, false, false, true, false]) ➞ 2
+// countTrue([false, false, false, false]) ➞ 0
+// countTrue([]) ➞ 0
+// Return 0 if given an empty array.
+// All array items are of the type bool (true or false).
+function countTrue(arr) {
+    let a = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === true) {
+            a.push(arr[i])
+        }
+    }
+    return a.length;
+}
+console.log('countTrue ', countTrue([true, false, false, true, false]));
+
+
+
+// CHALLENGE 27
+// Write a function redundant that takes in a string str and returns a function that returns str.
+// const f1 = redundant("apple")
+// f1() ➞ "apple"
+// const f2 = redundant("pear")
+// f2() ➞ "pear"
+// const f3 = redundant("")
+// f3() ➞ ""
+// Notes: Your function should return a function, not a string.
+function redundant(str) {
+    return function () {
+        return str;
+    }
+}
+const f2 = redundant("pear")
+console.log('redundant ', f2());
+
+
+
+// CHALLENGE 28
+// Convert Hours into Seconds
+// Write a function that converts hours into seconds.
+// Examples
+// howManySeconds(2) ➞ 7200
+// howManySeconds(10) ➞ 36000
+// howManySeconds(24) ➞ 86400
+// Notes
+//     60 seconds in a minute, 60 minutes in an hour
+//     Don't forget to return your answer.
+function howManySeconds(hours) {
+    return hours * 60 * 60;
+}
+console.log('howManySeconds ', howManySeconds(2));
+
+
+
+// CHALLENGE 29
+// Convert Age to Days
+// Create a function that takes the age and return the age in days.
+// Examples
+// calcAge(65) ➞ 23725
+// calcAge(0) ➞ 0
+// calcAge(20) ➞ 7300
+// Notes
+
+//     Use 365 days as the length of a year for this challenge.
+//     Ignore leap years and days between last birthday and now.
+//     Expect only positive integer inputs.
+function calcAge(age) {
+    return age * 365;
+}
+console.log('calcAge ', calcAge(65));
+
+
+
+// CHALLENGE 30
+// Tile Teamwork Tactics
+// In a board game, a piece may advance 1-6 tiles forward depending on the number rolled on a six-sided dice. If you advance your piece onto the same tile as another player's piece, both of you earn a bonus.
+// Given you and your friend's tile number, create a function that returns if it's possible to earn a bonus when you roll the dice.
+// Examples
+// possibleBonus(3, 7) ➞ true
+// possibleBonus(1, 9) ➞ false
+// possibleBonus(5, 3) ➞ false
+
+// Notes
+//     You cannot move backward (which is why example #3 doesn't work).
+//     If you are already on the same tile, return false, as you would be advancing away.
+//     Expect only positive integer inputs.
+function possibleBonus(a, b) {
+    return b - a <= 6 && b > a ? true : false;
+}
+console.log('possibleBonus ', possibleBonus(3, 7));
+
+
+
+// CHALLENGE 31
+// Is it Time for Milk and Cookies?
+// Christmas Eve is almost upon us, so naturally we need to prepare some milk and cookies for Santa! Create a function that accepts a Date object and returns true if it's Christmas Eve (December 24th) and false otherwise. Keep in mind JavaScript's Date month is 0 based, meaning December is the 11th month while January is 0.
+// Examples
+// timeForMilkAndCookies(new Date(2013, 11, 24)) ➞ true
+// timeForMilkAndCookies(new Date(2013, 0, 23)) ➞ false
+// timeForMilkAndCookies(new Date(3000, 11, 24)) ➞ true
+// Notes
+//     Dates are zero zero based (see resources).
+//     All test cases contain valid dates.
+function timeForMilkAndCookies(date) {
+    return date.getMonth() === 11 && date.getDate() === 24 ? true : false;
+}
+console.log('timeForMilkAndCookies ', timeForMilkAndCookies(new Date(3000, 11, 24)));
+
+
+
+// CHALLENGE 32
+// Matchstick Houses
+// This challenge will help you interpret mathematical relationships both algebraically and geometrically.
+// Matchstick Houses, Steps 1, 2 and 3
+// Create a function that takes a number (step) as an argument and returns the number of matchsticks in that step. See step 1, 2 and 3 in the image above.
+// Examples
+// matchHouses(1) ➞ 6
+// matchHouses(4) ➞ 21
+// matchHouses(87) ➞ 436
+// Notes
+//     Step 0 returns 0 matchsticks.
+//     The input (step) will always be a non-negative integer.
+//     Think of the input (step) as the total number of houses that have been connected together.
+function matchHouses(step) {
+    return step === 1 ? step * 6 : step >= 2 ? step * 6 - (step - 1) : 0;
+}
+console.log('matchHouses ', matchHouses(0));
+
+
+
+
+// CHALLENGE 33
+// Check if One Array can be Nested in Another
+// Create a function that returns true if the first array can be nested inside the second.
+// arr1 can be nested inside arr2 if:
+//     arr1's min is greater than arr2's min.
+//     arr1's max is less than arr2's max.
+// Examples
+// canNest([1, 2, 3, 4], [0, 6]) ➞ true
+// canNest([3, 1], [4, 0]) ➞ true
+// canNest([9, 9, 8], [8, 9]) ➞ false
+// canNest([1, 2, 3, 4], [2, 3]) ➞ false
+// Notes
+// Note the strict inequality (see example #3).
+function canNest(arr1, arr2) {
+    return Math.min(...arr1) > Math.min(...arr2) && Math.max(...arr1) < Math.max(...arr2) ? true : false;
+}
+console.log('canNest ', canNest([9, 9, 8], [8, 9]));
+
+
+
+// CHALLENGE 34
+// Add up the Numbers from a Single Number
+// Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function. For example, if the input is 4 then your function should return 10 because 1 + 2 + 3 + 4 = 10.
+// Examples
+// addUp(4) ➞ 10
+// addUp(13) ➞ 91
+// addUp(600) ➞ 180300
+// Notes
+// Expect any positive number between 1 and 1000.
+function addUp(num) {
+    let first = 0;
+    let sum = 0;
+    for (let i = 0; i < num; i++) {
+        if (first <= num) {
+            first++
+            sum += first;
+        }
+    }
+    return sum;
+}
+console.log('addUp ', addUp(4));
+
+
+
+// CHALLENGE 35
+// Convert a Number to Base-2
+// Create a function that returns a base-2 (binary) representation of a base-10 (decimal) string number. To convert is simple: ((2) means base-2 and (10) means base-10) 010101001(2) = 1 + 8 + 32 + 128.
+// Going from right to left, the value of the most right bit is 1, now from that every bit to the left will be x2 the value, value of an 8 bit binary numbers are (256, 128, 64, 32, 16, 8, 4, 2, 1).
+// Examples
+// binary(1) ➞ "1"
+// // 1*1 = 1
+// binary(5) ➞ "101"
+// // 1*1 + 1*4 = 5
+// binary(10) ➞ "1010"
+// // 1*2 + 1*8 = 10
+// Notes
+//     Numbers will always be below 1024 (not including 1024).
+//     The && operator could be useful.
+//     The strings will always go to the length at which the most left bit's value gets bigger than the number in decimal.
+//     If a binary conversion for 0 is attempted, return "0".
+function binary(decimal) {
+    return decimal.toString(2);
+}
+console.log('binary ', binary(1023));
+
+
+
+// CHALLENGE 36
+// Which Function Returns the Larger Number?
+// Your function will be passed two functions, f and g, that don't take any parameters. Your function has to call them, and return a string which indicates which function returned the larger number.
+//     If f returns the larger number, return the string f.
+//     If g returns the larger number, return the string g.
+//     If the functions return the same number, return the string neither.
+// Examples
+// whichIsLarger(() => 5, () => 10) ➞ "g"
+// whichIsLarger(() => 25,  () => 25) ➞ "neither"
+// whichIsLarger(() => 505050, () => 5050) ➞ "f"
+// Notes
+// This exercise is designed as an introduction to higher order functions (functions which use other functions to do their work).
+const whichIsLarger = (f, g) => f() > g() ? 'f' : f() < g() ? 'g' : 'neither';
+console.log('whichIsLarger ', whichIsLarger(() => 10, () => 1));
+
+
+
+// CHALLENGE 37
+// Older Than Me
+// Create a method in the Person class which returns how another person's age compares. Given the instances p1, p2 and p3, which will be initialised with the attributes name and age, return a sentence in the following format:
+// {other person name} is {older than / younger than / the same age as} me.
+// Examples
+// p1 = Person("Samuel", 24)
+// p2 = Person("Joel", 36)
+// p3 = Person("Lily", 24)
+// p1.compareAge(p2) ➞ "Joel is older than me."
+// p2.compareAge(p1) ➞ "Samuel is younger than me."
+// p1.compareAge(p3) ➞ "Lily is the same age as me."
+// Notes
+//     Check out the Resources tab for some helpful tutorials on JavaScript classes!
+//     If you're really stuck, check out the Solutions tab for answers.
+class Perz {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    compareAge(other) {
+        // Write code here!
+        return other.age > this.age ? other.name + ' is older than me.' : other.age < this.age ? other.name + ' is younger than me.' : other.name + ' is the same age as me.'
+    }
+}
+let pez1 = new Perz("Samuel", 24);
+let pez2 = new Perz("Joel", 36);
+console.log('Perz persons', pez1, pez2);
+console.log('Perz compare', pez2.compareAge(pez1));
+
+
+
+// CHALLENGE 38
+// Drink Sorting
+// You will be given an array of drinks, with each drink being an object with two properties: name and price. Create a function that has the drinks array as an argument and return the drinks objects sorted by price in ascending order.
+// Assume that the following array of drink objects needs to be sorted:
+// drinks = [
+//   {name: "lemonade", price: 50},
+//   {name: "lime", price: 10}
+// ]
+// The output of the sorted drinks object will be:
+// Examples
+// sortDrinkByPrice(drinks) ➞ [{name: "lime", price: 10}, {name: "lemonade", price: 50}]
+// Notes
+// N/A
+function sortDrinkByPrice(drinks) {
+    return drinks.sort((a, b) => a.price - b.price)
+}
+console.log('sortDrinkByPrice ', sortDrinkByPrice([{ name: 'lemonade', price: 90 },
+{ name: 'lime', price: 432 },
+{ name: 'peach', price: 23 }]));
+
+
+
+// CHALLENGE 39
+// Left Shift by Powers of Two
+// The left shift operation is similar to multiplication by powers of two.
+// Sample calculation using the left shift operator (<<):
+// 10 << 3 = 10 * 2^3 = 10 * 8 = 80
+// -32 << 2 = -32 * 2^2 = -32 * 4 = -128
+// 5 << 2 = 5 * 2^2 = 5 * 4 = 20
+// Write a function that mimics (without the use of <<) the left shift operator and returns the result from the two given integers.
+// Examples
+// shiftToLeft(5, 2) ➞ 20
+// shiftToLeft(10, 3) ➞ 80
+// shiftToLeft(-32, 2) ➞ -128
+// shiftToLeft(-6, 5) ➞ -192
+// shiftToLeft(12, 4) ➞ 192
+// shiftToLeft(46, 6) ➞ 2944
+// Notes
+//     There will be no negative values for the second parameter y.
+//     This challenge is more like recreating of the left shift operation, thus, the use of the operator directly is prohibited.
+//     Alternatively, you can solve this challenge via recursion.
+//     A recursive version of this challenge can be found via this link.
+function shiftToLeft(x, y) {
+    return x * Math.pow(2, y);
+}
+console.log('shiftToLeft ', shiftToLeft(-6, 5));
+
+
+
+// CHALLENGE 40
+// Number of Squares in an N * N Grid
+// Create a function that calculates the number of different squares in an n * n square grid. Check the Resources tab.
+// Examples
+// numberSquares(2) ➞ 5
+// numberSquares(4) ➞ 30
+// numberSquares(5) ➞ 55
+// Notes
+//     Input is a positive integer.
+//     Square pyramidal number.
+function numberSquares(n) {
+    let first = 0;
+    let sum = 0;
+    for (let i = 0; i < n; i++) {
+        if (first < n) {
+            first++;
+            sum += Math.pow(first, 2)
+        }
+    }
+    return sum;
+}
+console.log('numberSquares ', numberSquares(2));
+
+
+
+// CHALLENGE 41
+// Find the Smallest and Biggest Numbers
+// Create a function that takes an array of numbers and return both the minimum and maximum numbers, in that order.
+// Examples
+// minMax([1, 2, 3, 4, 5]) ➞ [1, 5]
+// minMax([2334454, 5]) ➞ [5, 2334454]
+// minMax([1]) ➞ [1, 1]
+// Notes
+// All test arrays will have at least one element and are valid.
+function minMax(arr) {
+    return [Math.min(...arr), Math.max(...arr)]
+}
+console.log('minMax ', minMax([1, 2, 3, 4, 5]));
