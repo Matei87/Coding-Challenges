@@ -881,3 +881,101 @@ function minMax(arr) {
     return [Math.min(...arr), Math.max(...arr)]
 }
 console.log('minMax ', minMax([1, 2, 3, 4, 5]));
+
+
+
+
+// CHALLENGE 41
+// Given an array of ones and zeroes, convert the equivalent binary value to an integer.
+// Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
+// Examples:
+// Testing: [0, 0, 0, 1] ==> 1
+// Testing: [0, 0, 1, 0] ==> 2
+// Testing: [0, 1, 0, 1] ==> 5
+// Testing: [1, 0, 0, 1] ==> 9
+// Testing: [0, 0, 1, 0] ==> 2
+// Testing: [0, 1, 1, 0] ==> 6
+// Testing: [1, 1, 1, 1] ==> 15
+// Testing: [1, 0, 1, 1] ==> 11
+// However, the arrays can have varying lengths, not just limited to 4.
+const binaryArrayToNumber = arr => {
+    // your code
+    return parseInt((arr + '').replace(/[^01]/gi, ''), 2)
+};
+console.log('binaryArrayToNumber ', binaryArrayToNumber([0, 0, 0, 1]));
+
+
+
+
+// CHALLENGE 42
+// Make a function that will return a greeting statement that uses an input; your program should return, "Hello, <name> how are you doing today?".
+// SQL: return results in a column named greeting
+// [Make sure you type the exact thing I wrote or the program may not execute properly]
+function greetSQL(name) {
+    //your code here
+    return `Hello, ${name} how are you doing today?`
+}
+console.log('greetSQL ', greetSQL("Ryan"));
+
+
+
+
+// CHALLENGE 44
+// Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
+// invert([1,2,3,4,5]) == [-1,-2,-3,-4,-5]
+// invert([1,-2,3,-4,5]) == [-1,2,-3,4,-5]
+// invert([]) == []
+// You can assume that all values are integers. Do not mutate the input array/list.
+function invert(array) {
+    let a = []
+    if (!array.length) {
+        return [];
+    } else {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] === 0) {
+                a.push(0);
+            } else {
+                a.push(-array[i]);
+            }
+        }
+    }
+
+    return a;
+}
+console.log('invert ', invert([1, -2, 3, -4, 5, 0]));
+
+
+
+
+// CHALLENGE 45
+// Complete the function which takes two arguments and returns all numbers which are divisible by the given divisor. First argument is an array of numbers and the second is the divisor.
+// Example
+// divisibleBy([1, 2, 3, 4, 5, 6], 2) == [2, 4, 6]
+function divisibleBy(numbers, divisor) {
+    let a = [];
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] % divisor === 0) {
+            a.push(numbers[i])
+        }
+    }
+    return a;
+}
+console.log('divisibleBy ', divisibleBy([1, 6, 5], 2));
+
+
+
+
+// CHALLENGE 46
+// Who remembers back to their time in the schoolyard, when girls would take a flower and tear its petals, saying each of the following phrases each time a petal was torn:
+//     I love you
+//     a little
+//     a lot
+//     passionately
+//     madly
+//     not at all
+// When the last petal was torn there were cries of excitement, dreams, surging thoughts and emotions.
+// Your goal in this kata is to determine which phrase the girls would say for a flower of a given number of petals, where nb_petals > 0.
+function howMuchILoveYou(nbPetals) {
+    return ['not at all', 'I love you', 'a little', 'a lot', 'passionately', 'madly'][nbPetals % 6]
+}
+console.log('howMuchILoveYou ', howMuchILoveYou(7));
