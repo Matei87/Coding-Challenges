@@ -979,3 +979,117 @@ function howMuchILoveYou(nbPetals) {
     return ['not at all', 'I love you', 'a little', 'a lot', 'passionately', 'madly'][nbPetals % 6]
 }
 console.log('howMuchILoveYou ', howMuchILoveYou(7));
+
+
+
+
+// CHALLENGE 47
+// Were you ever interested in the phenomena of astrology, star signs, tarot, voodoo ? (ok not voodoo that's too spooky)...
+// Task:
+// Your job for today is to finish the starSign function by finding the astrological sign, given the birth details as a Date object.
+// Start and end dates for zodiac signs vary on different resources so we will use this table to get consistent results:
+//     Aquarius ------ 21 January - 19 February
+//     Pisces --------- 20 February - 20 March
+//     Aries ---------- 21 March - 20 April
+//     Taurus -------- 21 April - 21 May
+//     Gemini -------- 22 May - 21 June
+//     Cancer -------- 22 June - 22 July
+//     Leo ------------- 23 July - 23 August
+//     Virgo ----------- 24 August - 23 September
+//     Libra ----------- 24 September - 23 October
+//     Scorpio -------- 24 October - 22 November
+//     Sagittarius ---- 23 November - 21 December
+//     Capricorn ----- 22 December - 20 January
+// Test info: 100 random tests (dates range from January 1st 1940 until now)
+function starSign(date) {
+    let day = date.getDate(); let month = date.getMonth() + 1;
+    if (month === 1 && day >= 21 || month === 2 && day <= 19) {
+        return 'Aquarius';
+    } else if (month === 2 && day >= 20 || month === 3 && day <= 20) {
+        return 'Pisces';
+    } else if (month === 3 && day >= 21 || month === 4 && day <= 20) {
+        return 'Aries';
+    } else if (month === 4 && day >= 21 || month === 5 && day <= 21) {
+        return 'Taurus';
+    } else if (month === 5 && day >= 22 || month === 6 && day <= 21) {
+        return 'Gemini';
+    } else if (month === 6 && day >= 22 || month === 7 && day <= 22) {
+        return 'Cancer';
+    } else if (month === 7 && day >= 23 || month === 8 && day <= 23) {
+        return 'Leo';
+    } else if (month === 8 && day >= 24 || month === 9 && day <= 23) {
+        return 'Virgo';
+    } else if (month === 9 && day >= 24 || month === 10 && day <= 23) {
+        return 'Libra';
+    } else if (month === 10 && day >= 24 || month === 11 && day <= 22) {
+        return 'Scorpio';
+    } else if (month === 11 && day >= 23 || month === 12 && day <= 21) {
+        return 'Sagittarius';
+    } else if (month === 12 && day >= 22 || month === 1 && day <= 20) {
+        return 'Capricorn';
+    }
+}
+console.log('starSign ', starSign(new Date(1970, 5, 5)));
+
+
+
+
+// CHALLENGE 48
+// The cockroach is one of the fastest insects. Write a function which takes its speed in km per hour and returns it in cm per second, rounded down to the integer (= floored).
+// For example:
+// cockroachSpeed(1.08) == 30
+// Note! The input is a Real number (actual type is language dependent) and is >= 0. The result should be an Integer.
+function cockroachSpeed(s) {
+    return Math.floor(s / 0.036)
+}
+console.log('cockroachSpeed ', cockroachSpeed(0));
+
+
+
+
+// CHALLENGE 49
+// The Hashtag Generator
+// The marketing team is spending way too much time typing in hashtags.
+// Let's help them with our own Hashtag Generator!
+// Here's the deal:
+//     It must start with a hashtag (#).
+//     All words must have their first letter capitalized.
+//     If the final result is longer than 140 chars it must return false.
+//     If the input or the result is an empty string it must return false.
+function generateHashtag(str) {
+    //console.log(str)
+    //console.log(str.split(' '))
+    let first = [];
+    str.split(' ').map(b => {
+        //console.log(b.slice(0, 1).toUpperCase())
+        first.push(b.slice(0, 1).toUpperCase() + b.slice(1, b.length));
+    })
+    //console.log(first.join(''))
+    let a = '#' + first.join('')
+    if (first.join('') === '' || a.length > 140 || str === '') {
+        return false;
+    }
+    return a;
+}
+console.log('generateHashtag ', generateHashtag("code" + " ".repeat(140) + "wars"));
+
+
+
+
+// CHALLENGE 50
+// Write an algorithm that will identify valid IPv4 addresses in dot-decimal format. IPs should be considered valid if they consist of four octets, with values between 0 and 255, inclusive.
+// Input to the function is guaranteed to be a single string.
+// Examples
+// Valid inputs:
+// 1.2.3.4
+// 123.45.67.89
+// Invalid inputs:
+// 1.2.3
+// 1.2.3.4.5
+// 123.456.78.90
+// 123.045.067.089
+// Note that leading zeros (e.g. 01.02.03.04) are considered invalid.
+function isValidIP(ip) {
+    return /^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|(?=$))){4}$/.test(ip)
+}
+console.log('isValidIP ', isValidIP('1.1.1e2.1'));
