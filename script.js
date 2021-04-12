@@ -1093,3 +1093,54 @@ function isValidIP(ip) {
     return /^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|(?=$))){4}$/.test(ip)
 }
 console.log('isValidIP ', isValidIP('1.1.1e2.1'));
+
+
+
+
+// CHALLENGE 50
+// Your classmates asked you to copy some paperwork for them. You know that there are 'n' classmates and the paperwork has 'm' pages.
+// Your task is to calculate how many blank pages do you need. If n < 0 or m < 0 return 0.
+// Example:
+// n= 5, m=5: 25
+// n=-5, m=5:  0
+function paperwork(n, m) {
+    if (n < 0 || m < 0) {
+        return 0;
+    }
+    return n * m;
+}
+console.log('paperwork ', paperwork(5, 5));
+
+
+
+
+// CHALLENGE 51
+// This Kata is intended as a small challenge for my students
+// All Star Code Challenge #22
+// Create a function that takes an integer argument of seconds and converts the value into a string describing how many hours and minutes comprise that many seconds.
+// Any remaining seconds left over are ignored.
+// Note:
+// The string output needs to be in the specific form - "X hour(s) and X minute(s)"
+// For example:
+// 3600 --> "1 hour(s) and 0 minute(s)"
+// 3601 --> "1 hour(s) and 0 minute(s)"
+// 3500 --> "0 hour(s) and 58 minute(s)"
+// 23500 --> "89 hour(s) and 51 minute(s)"
+function toTime(seconds) {
+    let hours = seconds / 3600;
+    let minutes;
+    console.log(hours, hours % 1 === 0)
+    if (hours > 1) {
+        console.log(seconds % 3600, Math.floor(seconds % 3600 / 60))
+        minutes = Math.floor(seconds % 3600 / 60)
+    }
+    if (hours < 1) {
+        hours = 0;
+        minutes = Math.floor(seconds % 3600 / 60)
+    }
+    if (minutes === undefined) {
+        minutes = 0;
+    }
+    return `${Math.floor(hours)} hour(s) and ${minutes} minute(s)`
+}
+console.log('toTime ', toTime(3500));
