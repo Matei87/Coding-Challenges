@@ -1188,3 +1188,8 @@ function splitTo(string) {
     return newArray;
 }
 console.log('splitTo ', splitTo('abcdef'));
+
+
+
+
+// CHALLENGE 54
