@@ -1171,3 +1171,20 @@ function highAndLow(numbers){
    return c[c.length - 1] + ' ' + c[0];
 }
 console.log('highAndLow ', highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"));
+
+
+
+
+// CHALLENGE 53
+// from 'abcdef' to ['a', 'a.b', 'a.b.c', 'a.b.c.d', ...]
+function splitTo(string) {
+    let newArray = [];
+    let built = '';
+    for(let i = 0; i < string.length; i++){
+        built += string[i];
+        newArray.push(built.split('').join('.'))
+    }
+    console.log(built, newArray, string)
+    return newArray;
+}
+console.log('splitTo ', splitTo('abcdef'));
