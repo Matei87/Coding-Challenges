@@ -4,103 +4,92 @@
 // PALIDROME
 // Given a string determine whether it is a palidrome
 var palidrome = (string) => {
-    var sanitazedString = string.toLowerCase().trim();
-    return sanitazedString === sanitazedString.split('').reverse().join('');
-}
-console.log('palidrome', palidrome('   iyeLLeYI'));
-
-
-
+  var sanitazedString = string.toLowerCase().trim();
+  return sanitazedString === sanitazedString.split("").reverse().join("");
+};
+console.log("palidrome", palidrome("   iyeLLeYI"));
 
 // CHALLENGE 2
 //MISSING NUMBERS
 //Given an array find the missing numbers and display them
 var numereLipsa = (arr) => {
-    let missing = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i + 1] - arr[i] > 1) {
-            for (let j = 1; j < arr[i + 1] - arr[i]; j++) {
-                //console.log(arr[i], i, arr[j], j);
-                missing.push(arr[i] + j);
-            }
-        }
+  let missing = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i + 1] - arr[i] > 1) {
+      for (let j = 1; j < arr[i + 1] - arr[i]; j++) {
+        //console.log(arr[i], i, arr[j], j);
+        missing.push(arr[i] + j);
+      }
     }
-    return missing;
-}
-console.log('numere lipsa', numereLipsa([0, 2, 5, 9, 11]));
-
-
+  }
+  return missing;
+};
+console.log("numere lipsa", numereLipsa([0, 2, 5, 9, 11]));
 
 // CHALLENGE 3
 //Count occurences in an array
 var frecventa = (arr) => {
-    //first solution
-    let count = {};
-    for (let i = 0; i < arr.length; i++) {
-        let num = arr[i];
-        //console.log(i, num, count);
-        count[arr[i]] = count[arr[i]] ? count[arr[i]] + 1 : 1;
-    }
+  //first solution
+  let count = {};
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+    //console.log(i, num, count);
+    count[arr[i]] = count[arr[i]] ? count[arr[i]] + 1 : 1;
+  }
 
-    //second solution
-    // return arr.reduce((acc, elem) => {
-    //     console.log(val, elem, acc);
-    //     let a;
-    //     if (val === elem) {
-    //         a = acc + 1;
-    //     } else {
-    //         a = acc;
-    //     }
-    //     return a;
-    // }, 0);
-    return count;
-}
-console.log('frecventa', frecventa([7, 7, 2, 1, 3, 4]));
-
-
-
+  //second solution
+  // return arr.reduce((acc, elem) => {
+  //     console.log(val, elem, acc);
+  //     let a;
+  //     if (val === elem) {
+  //         a = acc + 1;
+  //     } else {
+  //         a = acc;
+  //     }
+  //     return a;
+  // }, 0);
+  return count;
+};
+console.log("frecventa", frecventa([7, 7, 2, 1, 3, 4]));
 
 // CHALLENGE 4
 //Remove duplicates from an array
 let duplicates = (arr) => {
-    let b = [];
-    //first solution
-    // for (let i = 0; i < arr.length; i++) {
-    //     console.log(arr, i, arr[i], b.indexOf(arr[i]));
-    //     if (b.indexOf(arr[i]) === -1) {
-    //         b.push(arr[i]);
-    //     }
-    // }
-    // return b;
+  let b = [];
+  //first solution
+  // for (let i = 0; i < arr.length; i++) {
+  //     console.log(arr, i, arr[i], b.indexOf(arr[i]));
+  //     if (b.indexOf(arr[i]) === -1) {
+  //         b.push(arr[i]);
+  //     }
+  // }
+  // return b;
 
-    //second solution
-    // arr.sort();
-    // let temp;
-    // for (let i = 0; i < arr.length; i++) {
-    //     if (arr[i] !== temp) {
-    //         b.push(arr[i]);
-    //         temp = arr[i];
-    //     }
-    // }
-    // console.log(b);
-    // return temp;
+  //second solution
+  // arr.sort();
+  // let temp;
+  // for (let i = 0; i < arr.length; i++) {
+  //     if (arr[i] !== temp) {
+  //         b.push(arr[i]);
+  //         temp = arr[i];
+  //     }
+  // }
+  // console.log(b);
+  // return temp;
 
-    //thrird solution
-    // let hashtable = {};
-    // for (let i of arr) {
-    //     hashtable[i] = 1;
-    //     console.log(i, arr, hashtable);
-    // }
-    // b = Array.from(Object.keys(hashtable), Number);
-    // return b;
+  //thrird solution
+  // let hashtable = {};
+  // for (let i of arr) {
+  //     hashtable[i] = 1;
+  //     console.log(i, arr, hashtable);
+  // }
+  // b = Array.from(Object.keys(hashtable), Number);
+  // return b;
 
-    //forth solution
-    return [... new Set(arr)];
-}
-console.log('duplicates', duplicates([1, 2, 5, 1, 1, 8]));
-
-
-
+  //forth solution
+  return [...new Set(arr)];
+};
+console.log("duplicates", duplicates([1, 2, 5, 1, 1, 8]));
 
 // CHALLENGE 5
 //Power Calculator
@@ -112,13 +101,9 @@ console.log('duplicates', duplicates([1, 2, 5, 1, 1, 8]));
 // circuitPower(480, 20) ➞ 9600
 
 const circuitPower = (voltage, current) => {
-    return current * voltage;
-}
-console.log('circuitPower', circuitPower(230, 10));
-
-
-
-
+  return current * voltage;
+};
+console.log("circuitPower", circuitPower(230, 10));
 
 // CHALLENGE 6
 //Upvotes vs Downvotes
@@ -130,15 +115,12 @@ console.log('circuitPower', circuitPower(230, 10));
 // getVoteCount({ upvotes: 132, downvotes: 132 }) ➞ 0
 
 const getVoteCount = (votes) => {
-    // for (let i in votes) {
-    //     console.log(votes['upvotes'] - votes['downvotes']);
-    // }
-    return (Object.values(votes)[0] - Object.values(votes)[1]);
-}
-console.log('getVoteCount', getVoteCount({ upvotes: 1, downvotes: 4 }));
-
-
-
+  // for (let i in votes) {
+  //     console.log(votes['upvotes'] - votes['downvotes']);
+  // }
+  return Object.values(votes)[0] - Object.values(votes)[1];
+};
+console.log("getVoteCount", getVoteCount({ upvotes: 1, downvotes: 4 }));
 
 // CHALLENGE 7
 // Format I: Template String
@@ -159,15 +141,12 @@ console.log('getVoteCount', getVoteCount({ upvotes: 1, downvotes: 4 }));
 // const age = 12;
 // `Hello, you are ${age < 18 ? 'young' : 'old'}.` ➞ "Hello, you are young."
 
-// modify the template variable to be a template string 
+// modify the template variable to be a template string
 const format = (a, b, c) => {
-    // the result string must give: "Their names were: a, b and c."
-    return `Their names were: ${a}, ${b} and ${c}.`;
-}
-console.log('format', format('John', 'Joe', 'Jack'));
-
-
-
+  // the result string must give: "Their names were: a, b and c."
+  return `Their names were: ${a}, ${b} and ${c}.`;
+};
+console.log("format", format("John", "Joe", "Jack"));
 
 // CHALLENGE 8
 // Check if String Ending Matches Second String
@@ -184,13 +163,10 @@ console.log('format', format('John', 'Joe', 'Jack'));
 // All test cases are valid one word strings.
 
 const checkEnding = (str1, str2) => {
-    return str1.substr(str1.length - str2.length) === str2 ? true : false;
-    //return str1.endsWith(str2) ? true : false;
-}
-console.log('checkEnding', checkEnding('feminine', 'nine'));
-
-
-
+  return str1.substr(str1.length - str2.length) === str2 ? true : false;
+  //return str1.endsWith(str2) ? true : false;
+};
+console.log("checkEnding", checkEnding("feminine", "nine"));
 
 // CHALLENGE 9
 // Write a function that takes an integer and returns a string with the given number of "a"s in Edabit.
@@ -204,12 +180,9 @@ console.log('checkEnding', checkEnding('feminine', 'nine'));
 //     You'll only be given integers as test input.
 
 var howManyTimes = (num) => {
-    return `Ed${'a'.repeat(num)}bit`;
-}
-console.log('howManyTimes', howManyTimes(1));
-
-
-
+  return `Ed${"a".repeat(num)}bit`;
+};
+console.log("howManyTimes", howManyTimes(1));
 
 // CHALLENGE 10
 // Cube the Square Root
@@ -224,12 +197,9 @@ console.log('howManyTimes', howManyTimes(1));
 // All numbers will evenly square root, so don't worry about decimal numbers.
 
 let cubeSquareRoot = (num) => {
-    return num * Math.sqrt(num);
-}
-console.log('cubeSquareRoot', cubeSquareRoot(1646089));
-
-
-
+  return num * Math.sqrt(num);
+};
+console.log("cubeSquareRoot", cubeSquareRoot(1646089));
 
 // CHALLENGE 11
 // Smash Factor
@@ -246,14 +216,10 @@ console.log('cubeSquareRoot', cubeSquareRoot(1646089));
 //     Remember to round to the nearest hundredth.
 //     All values will be valid (so no dividing by zero).
 
-
 let smashFactor = (bs, cs) => {
-    return Number((bs / cs).toFixed(2));
-}
-console.log('smashFactor', smashFactor(154.7, 104.3));
-
-
-
+  return Number((bs / cs).toFixed(2));
+};
+console.log("smashFactor", smashFactor(154.7, 104.3));
 
 // CHALLENGE 12
 // Mini-Max Sum
@@ -263,37 +229,31 @@ console.log('smashFactor', smashFactor(154.7, 104.3));
 // miniMaxSum([7, 69, 2, 221, 8974]);
 // miniMaxSum([1, 2, 3, 4, 5]);
 const miniMaxSum = (arr) => {
-    let total = arr.reduce((acc, number) => acc + number, 0);
-    let maxim = total - Math.min(...arr);
-    let minim = total - Math.max(...arr);
-    console.log('miniMaxSum', minim, maxim);
-}
+  let total = arr.reduce((acc, number) => acc + number, 0);
+  let maxim = total - Math.min(...arr);
+  let minim = total - Math.max(...arr);
+  console.log("miniMaxSum", minim, maxim);
+};
 miniMaxSum([1, 2, 3, 4, 5]);
-
-
-
 
 // CHALLENGE 13
 // You are in charge of the cake for a child's birthday.
 // You have decided the cake will have one candle for each year of their total age.
 // They will only be able to blow out the tallest of the candles.
-// Count how many candles are tallest. 
+// Count how many candles are tallest.
 const birthdayCakeCandles = (candles) => {
-    // Write your code here
-    let max = Math.max(...candles);
-    let big = [];
-    //return candles.filter(candy => max === candy).length;
-    for (let i = 0; i < [...candles].length; i++) {
-        if (max === candles[i]) {
-            big.push(candles[i]);
-        }
+  // Write your code here
+  let max = Math.max(...candles);
+  let big = [];
+  //return candles.filter(candy => max === candy).length;
+  for (let i = 0; i < [...candles].length; i++) {
+    if (max === candles[i]) {
+      big.push(candles[i]);
     }
-    console.log('birthdayCakeCandles', big.length);
-}
+  }
+  console.log("birthdayCakeCandles", big.length);
+};
 birthdayCakeCandles([3, 1, 2, 3]);
-
-
-
 
 // CHALLENGE 14
 // Time Conversion
@@ -301,46 +261,40 @@ birthdayCakeCandles([3, 1, 2, 3]);
 // Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
 // - 12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock.
 const timeConversion = (s) => {
-    if (s.slice(-2) === "AM") {
-        if (s.slice(0, 2) == '12') {
-            return ("00" + s.slice(2, -2))
-        }
-        return (s.slice(0, -2))
-    } else {
-        if (s.slice(0, 2) == '12') {
-            return (s.slice(0, -2))
-        }
-        let firstS = Number(s.slice(0, 2)) + 12;
-        let secondS = s.slice(2, -2);
-        return (firstS + secondS);
+  if (s.slice(-2) === "AM") {
+    if (s.slice(0, 2) == "12") {
+      return "00" + s.slice(2, -2);
     }
-}
-console.log('timeConversion', timeConversion('12:05:45AM'));
-
-
-
+    return s.slice(0, -2);
+  } else {
+    if (s.slice(0, 2) == "12") {
+      return s.slice(0, -2);
+    }
+    let firstS = Number(s.slice(0, 2)) + 12;
+    let secondS = s.slice(2, -2);
+    return firstS + secondS;
+  }
+};
+console.log("timeConversion", timeConversion("12:05:45AM"));
 
 // CHALLENGE 15
 //Two sum
 //Given an array of numbers and an target return an array with the numbers that
 //have the sum equal with target
 const twoSum = (arr, target) => {
-    for (let i = 0; i < arr.length - 1; i++) {
-        let firstNumber = arr[i];
-        for (let j = i + 1; j < arr.length; j++) {
-            let secondNUmber = arr[j];
-            if (firstNumber + secondNUmber === target) {
-                return [firstNumber, secondNUmber];
-            }
-        }
-        console.log(arr[i]);
+  for (let i = 0; i < arr.length - 1; i++) {
+    let firstNumber = arr[i];
+    for (let j = i + 1; j < arr.length; j++) {
+      let secondNUmber = arr[j];
+      if (firstNumber + secondNUmber === target) {
+        return [firstNumber, secondNUmber];
+      }
     }
-    console.log(arr, target);
-}
-console.log('twoSum', twoSum([4, -1, 0, 1, 5, 6, 8, 10], 9));
-
-
-
+    console.log(arr[i]);
+  }
+  console.log(arr, target);
+};
+console.log("twoSum", twoSum([4, -1, 0, 1, 5, 6, 8, 10], 9));
 
 // CHALLENGE 16
 // Older Than Me
@@ -356,28 +310,25 @@ console.log('twoSum', twoSum([4, -1, 0, 1, 5, 6, 8, 10], 9));
 // p2.compareAge(p1) ➞ "Samuel is younger than me."
 // p1.compareAge(p3) ➞ "Lily is the same age as me."
 class Person {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
 
-    compareAge(other) {
-        if (other.age < this.age) {
-            return `${other.name} is younger than me.`
-        } else if (other.age > this.age) {
-            return `${other.name} is older than me.`
-        } else {
-            return `${other.name} is the same age as me.`
-        }
+  compareAge(other) {
+    if (other.age < this.age) {
+      return `${other.name} is younger than me.`;
+    } else if (other.age > this.age) {
+      return `${other.name} is older than me.`;
+    } else {
+      return `${other.name} is the same age as me.`;
     }
+  }
 }
 let p1 = new Person("Samuel", 24);
 let p2 = new Person("Joel", 36);
 let p3 = new Person("Lily", 24);
-console.log('compareAge', p2.compareAge(p1), p1.compareAge(p3));
-
-
-
+console.log("compareAge", p2.compareAge(p1), p1.compareAge(p3));
 
 // CHALLENGE 17
 // Return Last Index
@@ -393,12 +344,9 @@ console.log('compareAge', p2.compareAge(p1), p1.compareAge(p3));
 //     Arrays/strings will be of varying size.
 //     Return undefined if array/string is empty.
 const lastItem = (input) => {
-    return input[input.length - 1];
-}
-console.log('lastItem', lastItem([]));
-
-
-
+  return input[input.length - 1];
+};
+console.log("lastItem", lastItem([]));
 
 // CHALLENGE 18
 // Shuffle the Name
@@ -415,12 +363,9 @@ console.log('lastItem', lastItem([]));
 //     If you get stuck on a challenge, find help in the Resources tab.
 //     If you're really stuck, unlock solutions in the Solutions tab.
 const nameShuffle = (str) => {
-    return str.split(' ').reverse().join(' ');
-}
-console.log('nameShuffle', nameShuffle("Rosie O'Donnell"));
-
-
-
+  return str.split(" ").reverse().join(" ");
+};
+console.log("nameShuffle", nameShuffle("Rosie O'Donnell"));
 
 // CHALLENGE 19
 // Capture the Rook
@@ -437,32 +382,28 @@ console.log('nameShuffle', nameShuffle("Rosie O'Donnell"));
 //     Assume no blocking pieces.
 //     Two rooks can attack each other if they share the same row (letter) or column (number).
 const canCapture = ([yourRook, opponentsRook]) => {
-    return yourRook[0] === opponentsRook[0] || yourRook[1] === opponentsRook[1] ? true : false;
-}
-console.log('canCapture', canCapture(["F5", "C8"]));
-
-
+  return yourRook[0] === opponentsRook[0] || yourRook[1] === opponentsRook[1]
+    ? true
+    : false;
+};
+console.log("canCapture", canCapture(["F5", "C8"]));
 
 // CHALLENGE 20
 // Create a function (or write a script in Shell) that takes an integer as an argument and returns "Even"
 // for even numbers or "Odd" for odd numbers.
 const evenOrOdd = (number) => {
-    return number % 2 === 0 ? 'Even' : 'Odd';
-}
-console.log('evenOrOdd', evenOrOdd(2));
-
-
+  return number % 2 === 0 ? "Even" : "Odd";
+};
+console.log("evenOrOdd", evenOrOdd(2));
 
 // CHALLENGE 21
 // Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in
 // this way until a single-digit number is produced. The input will be a non-negative integer.
 
 const digital_root = (n) => {
-    return ((n - 1) % 9) + 1;
-}
-console.log('digital_root', digital_root(156));
-
-
+  return ((n - 1) % 9) + 1;
+};
+console.log("digital_root", digital_root(156));
 
 // CHALLENGE 22
 // Usually when you buy something, you're asked whether your credit card number, phone number or answer to
@@ -481,11 +422,15 @@ console.log('digital_root', digital_root(156));
 
 // return masked string
 const maskify = (cc) => {
-    let lengthMinus4 = cc.slice(0, -4).split('').map(a => '#').join('').concat(cc.slice(-4, cc.length));
-    return lengthMinus4;
-}
-console.log('maskify', maskify('9999999999999'));
-
+  let lengthMinus4 = cc
+    .slice(0, -4)
+    .split("")
+    .map((a) => "#")
+    .join("")
+    .concat(cc.slice(-4, cc.length));
+  return lengthMinus4;
+};
+console.log("maskify", maskify("9999999999999"));
 
 // CHALLENGE 23
 // The goal is to create a function 'numberToPower(number, power)' that "raises"
@@ -495,11 +440,9 @@ console.log('maskify', maskify('9999999999999'));
 // numberToPower(2,3)  // -> 8 ( = 2 * 2 * 2 )
 // numberToPower(10,6) // -> 1000000
 const numberToPower = (number, power) => {
-    return number ** power;
-}
-console.log('numberToPower', numberToPower(2, 3));
-
-
+  return number ** power;
+};
+console.log("numberToPower", numberToPower(2, 3));
 
 // CHALLENGE 24
 // Define a function that takes one integer argument and returns logical value true or false
@@ -507,15 +450,13 @@ console.log('numberToPower', numberToPower(2, 3));
 // Per Wikipedia, a prime number (or a prime) is a natural number greater than 1 that has no
 // positive divisors other than 1 and itself.
 const isPrime = (num) => {
-    for (let i = 2; i < num; i++)
-        if (num % i === 0) {
-            return false;
-        }
-    return num > 1;
-}
-console.log('isPrime', isPrime(4));
-
-
+  for (let i = 2; i < num; i++)
+    if (num % i === 0) {
+      return false;
+    }
+  return num > 1;
+};
+console.log("isPrime", isPrime(4));
 
 // CHALLENGE 25
 // likes [] -- must be "no one likes this"
@@ -524,26 +465,24 @@ console.log('isPrime', isPrime(4));
 // likes ["Max", "John", "Mark"] -- must be "Max, John and Mark like this"
 // likes ["Alex", "Jacob", "Mark", "Max"] -- must be "Alex, Jacob and 2 others like this"
 const likes = (names) => {
-    // TODO
-    let a = []
-    for (let i = 0; i < names.length; i++) {
-        a.push(names[i])
-    }
-    if (a.length === 0) {
-        return 'no one likes this'
-    } else if (a.length === 1) {
-        return `${a} likes this`
-    } else if (a.length === 2) {
-        return `${a[0]} and ${a[1]} like this`
-    } else if (a.length === 3) {
-        return `${a[0]}, ${a[1]} and ${a[2]} like this`
-    } else if (a.length >= 4) {
-        return `${a[0]}, ${a[1]} and ${a.length - 2} others like this`
-    }
-}
-console.log('likes', likes(['Alex', 'Jacob', 'Mark', 'Max', 'Ionut']));
-
-
+  // TODO
+  let a = [];
+  for (let i = 0; i < names.length; i++) {
+    a.push(names[i]);
+  }
+  if (a.length === 0) {
+    return "no one likes this";
+  } else if (a.length === 1) {
+    return `${a} likes this`;
+  } else if (a.length === 2) {
+    return `${a[0]} and ${a[1]} like this`;
+  } else if (a.length === 3) {
+    return `${a[0]}, ${a[1]} and ${a[2]} like this`;
+  } else if (a.length >= 4) {
+    return `${a[0]}, ${a[1]} and ${a.length - 2} others like this`;
+  }
+};
+console.log("likes", likes(["Alex", "Jacob", "Mark", "Max", "Ionut"]));
 
 // CHALLENGE 26
 // Create a function which returns the number of true values there are in an array.
@@ -553,17 +492,15 @@ console.log('likes', likes(['Alex', 'Jacob', 'Mark', 'Max', 'Ionut']));
 // Return 0 if given an empty array.
 // All array items are of the type bool (true or false).
 function countTrue(arr) {
-    let a = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === true) {
-            a.push(arr[i])
-        }
+  let a = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === true) {
+      a.push(arr[i]);
     }
-    return a.length;
+  }
+  return a.length;
 }
-console.log('countTrue ', countTrue([true, false, false, true, false]));
-
-
+console.log("countTrue ", countTrue([true, false, false, true, false]));
 
 // CHALLENGE 27
 // Write a function redundant that takes in a string str and returns a function that returns str.
@@ -575,14 +512,12 @@ console.log('countTrue ', countTrue([true, false, false, true, false]));
 // f3() ➞ ""
 // Notes: Your function should return a function, not a string.
 function redundant(str) {
-    return function () {
-        return str;
-    }
+  return function () {
+    return str;
+  };
 }
-const f2 = redundant("pear")
-console.log('redundant ', f2());
-
-
+const f2 = redundant("pear");
+console.log("redundant ", f2());
 
 // CHALLENGE 28
 // Convert Hours into Seconds
@@ -595,11 +530,9 @@ console.log('redundant ', f2());
 //     60 seconds in a minute, 60 minutes in an hour
 //     Don't forget to return your answer.
 function howManySeconds(hours) {
-    return hours * 60 * 60;
+  return hours * 60 * 60;
 }
-console.log('howManySeconds ', howManySeconds(2));
-
-
+console.log("howManySeconds ", howManySeconds(2));
 
 // CHALLENGE 29
 // Convert Age to Days
@@ -614,11 +547,9 @@ console.log('howManySeconds ', howManySeconds(2));
 //     Ignore leap years and days between last birthday and now.
 //     Expect only positive integer inputs.
 function calcAge(age) {
-    return age * 365;
+  return age * 365;
 }
-console.log('calcAge ', calcAge(65));
-
-
+console.log("calcAge ", calcAge(65));
 
 // CHALLENGE 30
 // Tile Teamwork Tactics
@@ -634,11 +565,9 @@ console.log('calcAge ', calcAge(65));
 //     If you are already on the same tile, return false, as you would be advancing away.
 //     Expect only positive integer inputs.
 function possibleBonus(a, b) {
-    return b - a <= 6 && b > a ? true : false;
+  return b - a <= 6 && b > a ? true : false;
 }
-console.log('possibleBonus ', possibleBonus(3, 7));
-
-
+console.log("possibleBonus ", possibleBonus(3, 7));
 
 // CHALLENGE 31
 // Is it Time for Milk and Cookies?
@@ -651,11 +580,12 @@ console.log('possibleBonus ', possibleBonus(3, 7));
 //     Dates are zero zero based (see resources).
 //     All test cases contain valid dates.
 function timeForMilkAndCookies(date) {
-    return date.getMonth() === 11 && date.getDate() === 24 ? true : false;
+  return date.getMonth() === 11 && date.getDate() === 24 ? true : false;
 }
-console.log('timeForMilkAndCookies ', timeForMilkAndCookies(new Date(3000, 11, 24)));
-
-
+console.log(
+  "timeForMilkAndCookies ",
+  timeForMilkAndCookies(new Date(3000, 11, 24))
+);
 
 // CHALLENGE 32
 // Matchstick Houses
@@ -671,12 +601,9 @@ console.log('timeForMilkAndCookies ', timeForMilkAndCookies(new Date(3000, 11, 2
 //     The input (step) will always be a non-negative integer.
 //     Think of the input (step) as the total number of houses that have been connected together.
 function matchHouses(step) {
-    return step === 1 ? step * 6 : step >= 2 ? step * 6 - (step - 1) : 0;
+  return step === 1 ? step * 6 : step >= 2 ? step * 6 - (step - 1) : 0;
 }
-console.log('matchHouses ', matchHouses(0));
-
-
-
+console.log("matchHouses ", matchHouses(0));
 
 // CHALLENGE 33
 // Check if One Array can be Nested in Another
@@ -692,11 +619,12 @@ console.log('matchHouses ', matchHouses(0));
 // Notes
 // Note the strict inequality (see example #3).
 function canNest(arr1, arr2) {
-    return Math.min(...arr1) > Math.min(...arr2) && Math.max(...arr1) < Math.max(...arr2) ? true : false;
+  return Math.min(...arr1) > Math.min(...arr2) &&
+    Math.max(...arr1) < Math.max(...arr2)
+    ? true
+    : false;
 }
-console.log('canNest ', canNest([9, 9, 8], [8, 9]));
-
-
+console.log("canNest ", canNest([9, 9, 8], [8, 9]));
 
 // CHALLENGE 34
 // Add up the Numbers from a Single Number
@@ -708,19 +636,17 @@ console.log('canNest ', canNest([9, 9, 8], [8, 9]));
 // Notes
 // Expect any positive number between 1 and 1000.
 function addUp(num) {
-    let first = 0;
-    let sum = 0;
-    for (let i = 0; i < num; i++) {
-        if (first <= num) {
-            first++
-            sum += first;
-        }
+  let first = 0;
+  let sum = 0;
+  for (let i = 0; i < num; i++) {
+    if (first <= num) {
+      first++;
+      sum += first;
     }
-    return sum;
+  }
+  return sum;
 }
-console.log('addUp ', addUp(4));
-
-
+console.log("addUp ", addUp(4));
 
 // CHALLENGE 35
 // Convert a Number to Base-2
@@ -739,11 +665,9 @@ console.log('addUp ', addUp(4));
 //     The strings will always go to the length at which the most left bit's value gets bigger than the number in decimal.
 //     If a binary conversion for 0 is attempted, return "0".
 function binary(decimal) {
-    return decimal.toString(2);
+  return decimal.toString(2);
 }
-console.log('binary ', binary(1023));
-
-
+console.log("binary ", binary(1023));
 
 // CHALLENGE 36
 // Which Function Returns the Larger Number?
@@ -757,10 +681,14 @@ console.log('binary ', binary(1023));
 // whichIsLarger(() => 505050, () => 5050) ➞ "f"
 // Notes
 // This exercise is designed as an introduction to higher order functions (functions which use other functions to do their work).
-const whichIsLarger = (f, g) => f() > g() ? 'f' : f() < g() ? 'g' : 'neither';
-console.log('whichIsLarger ', whichIsLarger(() => 10, () => 1));
-
-
+const whichIsLarger = (f, g) => (f() > g() ? "f" : f() < g() ? "g" : "neither");
+console.log(
+  "whichIsLarger ",
+  whichIsLarger(
+    () => 10,
+    () => 1
+  )
+);
 
 // CHALLENGE 37
 // Older Than Me
@@ -777,22 +705,24 @@ console.log('whichIsLarger ', whichIsLarger(() => 10, () => 1));
 //     Check out the Resources tab for some helpful tutorials on JavaScript classes!
 //     If you're really stuck, check out the Solutions tab for answers.
 class Perz {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
 
-    compareAge(other) {
-        // Write code here!
-        return other.age > this.age ? other.name + ' is older than me.' : other.age < this.age ? other.name + ' is younger than me.' : other.name + ' is the same age as me.'
-    }
+  compareAge(other) {
+    // Write code here!
+    return other.age > this.age
+      ? other.name + " is older than me."
+      : other.age < this.age
+      ? other.name + " is younger than me."
+      : other.name + " is the same age as me.";
+  }
 }
 let pez1 = new Perz("Samuel", 24);
 let pez2 = new Perz("Joel", 36);
-console.log('Perz persons', pez1, pez2);
-console.log('Perz compare', pez2.compareAge(pez1));
-
-
+console.log("Perz persons", pez1, pez2);
+console.log("Perz compare", pez2.compareAge(pez1));
 
 // CHALLENGE 38
 // Drink Sorting
@@ -808,13 +738,16 @@ console.log('Perz compare', pez2.compareAge(pez1));
 // Notes
 // N/A
 function sortDrinkByPrice(drinks) {
-    return drinks.sort((a, b) => a.price - b.price)
+  return drinks.sort((a, b) => a.price - b.price);
 }
-console.log('sortDrinkByPrice ', sortDrinkByPrice([{ name: 'lemonade', price: 90 },
-{ name: 'lime', price: 432 },
-{ name: 'peach', price: 23 }]));
-
-
+console.log(
+  "sortDrinkByPrice ",
+  sortDrinkByPrice([
+    { name: "lemonade", price: 90 },
+    { name: "lime", price: 432 },
+    { name: "peach", price: 23 },
+  ])
+);
 
 // CHALLENGE 39
 // Left Shift by Powers of Two
@@ -837,11 +770,9 @@ console.log('sortDrinkByPrice ', sortDrinkByPrice([{ name: 'lemonade', price: 90
 //     Alternatively, you can solve this challenge via recursion.
 //     A recursive version of this challenge can be found via this link.
 function shiftToLeft(x, y) {
-    return x * Math.pow(2, y);
+  return x * Math.pow(2, y);
 }
-console.log('shiftToLeft ', shiftToLeft(-6, 5));
-
-
+console.log("shiftToLeft ", shiftToLeft(-6, 5));
 
 // CHALLENGE 40
 // Number of Squares in an N * N Grid
@@ -854,19 +785,17 @@ console.log('shiftToLeft ', shiftToLeft(-6, 5));
 //     Input is a positive integer.
 //     Square pyramidal number.
 function numberSquares(n) {
-    let first = 0;
-    let sum = 0;
-    for (let i = 0; i < n; i++) {
-        if (first < n) {
-            first++;
-            sum += Math.pow(first, 2)
-        }
+  let first = 0;
+  let sum = 0;
+  for (let i = 0; i < n; i++) {
+    if (first < n) {
+      first++;
+      sum += Math.pow(first, 2);
     }
-    return sum;
+  }
+  return sum;
 }
-console.log('numberSquares ', numberSquares(2));
-
-
+console.log("numberSquares ", numberSquares(2));
 
 // CHALLENGE 41
 // Find the Smallest and Biggest Numbers
@@ -878,12 +807,9 @@ console.log('numberSquares ', numberSquares(2));
 // Notes
 // All test arrays will have at least one element and are valid.
 function minMax(arr) {
-    return [Math.min(...arr), Math.max(...arr)]
+  return [Math.min(...arr), Math.max(...arr)];
 }
-console.log('minMax ', minMax([1, 2, 3, 4, 5]));
-
-
-
+console.log("minMax ", minMax([1, 2, 3, 4, 5]));
 
 // CHALLENGE 41
 // Given an array of ones and zeroes, convert the equivalent binary value to an integer.
@@ -898,27 +824,21 @@ console.log('minMax ', minMax([1, 2, 3, 4, 5]));
 // Testing: [1, 1, 1, 1] ==> 15
 // Testing: [1, 0, 1, 1] ==> 11
 // However, the arrays can have varying lengths, not just limited to 4.
-const binaryArrayToNumber = arr => {
-    // your code
-    return parseInt((arr + '').replace(/[^01]/gi, ''), 2)
+const binaryArrayToNumber = (arr) => {
+  // your code
+  return parseInt((arr + "").replace(/[^01]/gi, ""), 2);
 };
-console.log('binaryArrayToNumber ', binaryArrayToNumber([0, 0, 0, 1]));
-
-
-
+console.log("binaryArrayToNumber ", binaryArrayToNumber([0, 0, 0, 1]));
 
 // CHALLENGE 42
 // Make a function that will return a greeting statement that uses an input; your program should return, "Hello, <name> how are you doing today?".
 // SQL: return results in a column named greeting
 // [Make sure you type the exact thing I wrote or the program may not execute properly]
 function greetSQL(name) {
-    //your code here
-    return `Hello, ${name} how are you doing today?`
+  //your code here
+  return `Hello, ${name} how are you doing today?`;
 }
-console.log('greetSQL ', greetSQL("Ryan"));
-
-
-
+console.log("greetSQL ", greetSQL("Ryan"));
 
 // CHALLENGE 44
 // Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
@@ -927,43 +847,37 @@ console.log('greetSQL ', greetSQL("Ryan"));
 // invert([]) == []
 // You can assume that all values are integers. Do not mutate the input array/list.
 function invert(array) {
-    let a = []
-    if (!array.length) {
-        return [];
-    } else {
-        for (let i = 0; i < array.length; i++) {
-            if (array[i] === 0) {
-                a.push(0);
-            } else {
-                a.push(-array[i]);
-            }
-        }
+  let a = [];
+  if (!array.length) {
+    return [];
+  } else {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === 0) {
+        a.push(0);
+      } else {
+        a.push(-array[i]);
+      }
     }
+  }
 
-    return a;
+  return a;
 }
-console.log('invert ', invert([1, -2, 3, -4, 5, 0]));
-
-
-
+console.log("invert ", invert([1, -2, 3, -4, 5, 0]));
 
 // CHALLENGE 45
 // Complete the function which takes two arguments and returns all numbers which are divisible by the given divisor. First argument is an array of numbers and the second is the divisor.
 // Example
 // divisibleBy([1, 2, 3, 4, 5, 6], 2) == [2, 4, 6]
 function divisibleBy(numbers, divisor) {
-    let a = [];
-    for (let i = 0; i < numbers.length; i++) {
-        if (numbers[i] % divisor === 0) {
-            a.push(numbers[i])
-        }
+  let a = [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % divisor === 0) {
+      a.push(numbers[i]);
     }
-    return a;
+  }
+  return a;
 }
-console.log('divisibleBy ', divisibleBy([1, 6, 5], 2));
-
-
-
+console.log("divisibleBy ", divisibleBy([1, 6, 5], 2));
 
 // CHALLENGE 46
 // Who remembers back to their time in the schoolyard, when girls would take a flower and tear its petals, saying each of the following phrases each time a petal was torn:
@@ -976,12 +890,16 @@ console.log('divisibleBy ', divisibleBy([1, 6, 5], 2));
 // When the last petal was torn there were cries of excitement, dreams, surging thoughts and emotions.
 // Your goal in this kata is to determine which phrase the girls would say for a flower of a given number of petals, where nb_petals > 0.
 function howMuchILoveYou(nbPetals) {
-    return ['not at all', 'I love you', 'a little', 'a lot', 'passionately', 'madly'][nbPetals % 6]
+  return [
+    "not at all",
+    "I love you",
+    "a little",
+    "a lot",
+    "passionately",
+    "madly",
+  ][nbPetals % 6];
 }
-console.log('howMuchILoveYou ', howMuchILoveYou(7));
-
-
-
+console.log("howMuchILoveYou ", howMuchILoveYou(7));
 
 // CHALLENGE 47
 // Were you ever interested in the phenomena of astrology, star signs, tarot, voodoo ? (ok not voodoo that's too spooky)...
@@ -1002,37 +920,35 @@ console.log('howMuchILoveYou ', howMuchILoveYou(7));
 //     Capricorn ----- 22 December - 20 January
 // Test info: 100 random tests (dates range from January 1st 1940 until now)
 function starSign(date) {
-    let day = date.getDate(); let month = date.getMonth() + 1;
-    if (month === 1 && day >= 21 || month === 2 && day <= 19) {
-        return 'Aquarius';
-    } else if (month === 2 && day >= 20 || month === 3 && day <= 20) {
-        return 'Pisces';
-    } else if (month === 3 && day >= 21 || month === 4 && day <= 20) {
-        return 'Aries';
-    } else if (month === 4 && day >= 21 || month === 5 && day <= 21) {
-        return 'Taurus';
-    } else if (month === 5 && day >= 22 || month === 6 && day <= 21) {
-        return 'Gemini';
-    } else if (month === 6 && day >= 22 || month === 7 && day <= 22) {
-        return 'Cancer';
-    } else if (month === 7 && day >= 23 || month === 8 && day <= 23) {
-        return 'Leo';
-    } else if (month === 8 && day >= 24 || month === 9 && day <= 23) {
-        return 'Virgo';
-    } else if (month === 9 && day >= 24 || month === 10 && day <= 23) {
-        return 'Libra';
-    } else if (month === 10 && day >= 24 || month === 11 && day <= 22) {
-        return 'Scorpio';
-    } else if (month === 11 && day >= 23 || month === 12 && day <= 21) {
-        return 'Sagittarius';
-    } else if (month === 12 && day >= 22 || month === 1 && day <= 20) {
-        return 'Capricorn';
-    }
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  if ((month === 1 && day >= 21) || (month === 2 && day <= 19)) {
+    return "Aquarius";
+  } else if ((month === 2 && day >= 20) || (month === 3 && day <= 20)) {
+    return "Pisces";
+  } else if ((month === 3 && day >= 21) || (month === 4 && day <= 20)) {
+    return "Aries";
+  } else if ((month === 4 && day >= 21) || (month === 5 && day <= 21)) {
+    return "Taurus";
+  } else if ((month === 5 && day >= 22) || (month === 6 && day <= 21)) {
+    return "Gemini";
+  } else if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) {
+    return "Cancer";
+  } else if ((month === 7 && day >= 23) || (month === 8 && day <= 23)) {
+    return "Leo";
+  } else if ((month === 8 && day >= 24) || (month === 9 && day <= 23)) {
+    return "Virgo";
+  } else if ((month === 9 && day >= 24) || (month === 10 && day <= 23)) {
+    return "Libra";
+  } else if ((month === 10 && day >= 24) || (month === 11 && day <= 22)) {
+    return "Scorpio";
+  } else if ((month === 11 && day >= 23) || (month === 12 && day <= 21)) {
+    return "Sagittarius";
+  } else if ((month === 12 && day >= 22) || (month === 1 && day <= 20)) {
+    return "Capricorn";
+  }
 }
-console.log('starSign ', starSign(new Date(1970, 5, 5)));
-
-
-
+console.log("starSign ", starSign(new Date(1970, 5, 5)));
 
 // CHALLENGE 48
 // The cockroach is one of the fastest insects. Write a function which takes its speed in km per hour and returns it in cm per second, rounded down to the integer (= floored).
@@ -1040,12 +956,9 @@ console.log('starSign ', starSign(new Date(1970, 5, 5)));
 // cockroachSpeed(1.08) == 30
 // Note! The input is a Real number (actual type is language dependent) and is >= 0. The result should be an Integer.
 function cockroachSpeed(s) {
-    return Math.floor(s / 0.036)
+  return Math.floor(s / 0.036);
 }
-console.log('cockroachSpeed ', cockroachSpeed(0));
-
-
-
+console.log("cockroachSpeed ", cockroachSpeed(0));
 
 // CHALLENGE 49
 // The Hashtag Generator
@@ -1057,24 +970,24 @@ console.log('cockroachSpeed ', cockroachSpeed(0));
 //     If the final result is longer than 140 chars it must return false.
 //     If the input or the result is an empty string it must return false.
 function generateHashtag(str) {
-    //console.log(str)
-    //console.log(str.split(' '))
-    let first = [];
-    str.split(' ').map(b => {
-        //console.log(b.slice(0, 1).toUpperCase())
-        first.push(b.slice(0, 1).toUpperCase() + b.slice(1, b.length));
-    })
-    //console.log(first.join(''))
-    let a = '#' + first.join('')
-    if (first.join('') === '' || a.length > 140 || str === '') {
-        return false;
-    }
-    return a;
+  //console.log(str)
+  //console.log(str.split(' '))
+  let first = [];
+  str.split(" ").map((b) => {
+    //console.log(b.slice(0, 1).toUpperCase())
+    first.push(b.slice(0, 1).toUpperCase() + b.slice(1, b.length));
+  });
+  //console.log(first.join(''))
+  let a = "#" + first.join("");
+  if (first.join("") === "" || a.length > 140 || str === "") {
+    return false;
+  }
+  return a;
 }
-console.log('generateHashtag ', generateHashtag("code" + " ".repeat(140) + "wars"));
-
-
-
+console.log(
+  "generateHashtag ",
+  generateHashtag("code" + " ".repeat(140) + "wars")
+);
 
 // CHALLENGE 50
 // Write an algorithm that will identify valid IPv4 addresses in dot-decimal format. IPs should be considered valid if they consist of four octets, with values between 0 and 255, inclusive.
@@ -1090,12 +1003,9 @@ console.log('generateHashtag ', generateHashtag("code" + " ".repeat(140) + "wars
 // 123.045.067.089
 // Note that leading zeros (e.g. 01.02.03.04) are considered invalid.
 function isValidIP(ip) {
-    return /^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|(?=$))){4}$/.test(ip)
+  return /^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|(?=$))){4}$/.test(ip);
 }
-console.log('isValidIP ', isValidIP('1.1.1e2.1'));
-
-
-
+console.log("isValidIP ", isValidIP("1.1.1e2.1"));
 
 // CHALLENGE 50
 // Your classmates asked you to copy some paperwork for them. You know that there are 'n' classmates and the paperwork has 'm' pages.
@@ -1104,15 +1014,12 @@ console.log('isValidIP ', isValidIP('1.1.1e2.1'));
 // n= 5, m=5: 25
 // n=-5, m=5:  0
 function paperwork(n, m) {
-    if (n < 0 || m < 0) {
-        return 0;
-    }
-    return n * m;
+  if (n < 0 || m < 0) {
+    return 0;
+  }
+  return n * m;
 }
-console.log('paperwork ', paperwork(5, 5));
-
-
-
+console.log("paperwork ", paperwork(5, 5));
 
 // CHALLENGE 51
 // This Kata is intended as a small challenge for my students
@@ -1127,26 +1034,23 @@ console.log('paperwork ', paperwork(5, 5));
 // 3500 --> "0 hour(s) and 58 minute(s)"
 // 23500 --> "89 hour(s) and 51 minute(s)"
 function toTime(seconds) {
-    let hours = seconds / 3600;
-    let minutes;
-    console.log(hours, hours % 1 === 0)
-    if (hours > 1) {
-        console.log(seconds % 3600, Math.floor(seconds % 3600 / 60))
-        minutes = Math.floor(seconds % 3600 / 60)
-    }
-    if (hours < 1) {
-        hours = 0;
-        minutes = Math.floor(seconds % 3600 / 60)
-    }
-    if (minutes === undefined) {
-        minutes = 0;
-    }
-    return `${Math.floor(hours)} hour(s) and ${minutes} minute(s)`
+  let hours = seconds / 3600;
+  let minutes;
+  console.log(hours, hours % 1 === 0);
+  if (hours > 1) {
+    console.log(seconds % 3600, Math.floor((seconds % 3600) / 60));
+    minutes = Math.floor((seconds % 3600) / 60);
+  }
+  if (hours < 1) {
+    hours = 0;
+    minutes = Math.floor((seconds % 3600) / 60);
+  }
+  if (minutes === undefined) {
+    minutes = 0;
+  }
+  return `${Math.floor(hours)} hour(s) and ${minutes} minute(s)`;
 }
-console.log('toTime ', toTime(3500));
-
-
-
+console.log("toTime ", toTime(3500));
 
 // CHALLENGE 52
 // Highest and Lowest
@@ -1159,37 +1063,71 @@ console.log('toTime ', toTime(3500));
 //     All numbers are valid Int32, no need to validate them.
 //     There will always be at least one number in the input string.
 //     Output string must be two numbers separated by a single space, and highest number is first.
-function highAndLow(numbers){
-    //console.log('numbers ', numbers, numbers.split(' '));
-    let a = numbers.split(' ');
-    //console.log('a ', a);
-    let b = a.map(num => Number(num))
-    //console.log('b ', b);
-    let c = b.sort( (d, e) => d - e)
-    //console.log('c ', c);
-    //console.log(c[0], c[c.length - 1]);
-   return c[c.length - 1] + ' ' + c[0];
+function highAndLow(numbers) {
+  //console.log('numbers ', numbers, numbers.split(' '));
+  let a = numbers.split(" ");
+  //console.log('a ', a);
+  let b = a.map((num) => Number(num));
+  //console.log('b ', b);
+  let c = b.sort((d, e) => d - e);
+  //console.log('c ', c);
+  //console.log(c[0], c[c.length - 1]);
+  return c[c.length - 1] + " " + c[0];
 }
-console.log('highAndLow ', highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"));
-
-
-
+console.log("highAndLow ", highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"));
 
 // CHALLENGE 53
 // from 'abcdef' to ['a', 'a.b', 'a.b.c', 'a.b.c.d', ...]
 function splitTo(string) {
-    let newArray = [];
-    let built = '';
-    for(let i = 0; i < string.length; i++){
-        built += string[i];
-        newArray.push(built.split('').join('.'))
-    }
-    console.log(built, newArray, string)
-    return newArray;
+  let newArray = [];
+  let built = "";
+  for (let i = 0; i < string.length; i++) {
+    built += string[i];
+    newArray.push(built.split("").join("."));
+  }
+  console.log(built, newArray, string);
+  return newArray;
 }
-console.log('splitTo ', splitTo('abcdef'));
-
-
-
+console.log("splitTo ", splitTo("abcdef"));
 
 // CHALLENGE 54
+let dats = [
+  { Car: "Honda", hello: "hi" },
+  { Car: "Honda", hello: "hieee" },
+  { car: "Volvo" },
+];
+//the output is :
+// Honda
+// hi
+// Volvo
+// and I want it to be only this :
+// hi
+let c = [];
+// for(let i = 0; i < dats.length; i++){
+//     if(Object.values(dats[i])[1] === undefined){
+//         continue;
+//     }
+//     console.log(Object.values(dats[i])[1])
+//     c += Object.values(dats[i])[1];
+// }
+for (let i = 0; i < dats.length; i++) {
+  if (Object.values(dats[i])[1] === undefined) {
+    continue;
+  }
+  c.push(Object.values(dats[i])[1]);
+}
+console.log("DATAA ", c);
+
+// CHALLENGE 55
+const countAnimals = (sentence) => {
+  // Your code here
+  return sentence
+    .split(" ")
+    .map((n) => +n)
+    .filter((n) => n > 0)
+    .reduce((a, b) => a + b, 0);
+};
+console.log(
+  "countAnimals ",
+  countAnimals("Mom, 3 rhinoceros and 6 snakes come to us!")
+);
