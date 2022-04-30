@@ -1131,3 +1131,673 @@ console.log(
   "countAnimals ",
   countAnimals("Mom, 3 rhinoceros and 6 snakes come to us!")
 );
+
+const arrayed = (arr) => {
+  //Good luck
+  let arrayed = arr.split("");
+  if (arr.length <= 2) {
+    return null;
+  }
+  let newArray = [];
+  for (let i = 0; i < arrayed.length; i++) {
+    if (arrayed[i] === " " || arrayed[i] === ",") {
+      continue;
+    }
+    newArray.push(arrayed[i]);
+  }
+  if (newArray.length <= 2) {
+    return null;
+  }
+  console.log(arrayed, newArray);
+  newArray.pop();
+  newArray.shift();
+  console.log(newArray);
+  return newArray.toString();
+};
+console.log("arrayed ", arrayed("1, 3"));
+
+// CHALLENGE 56
+// Write a function that checks whether all elements in an array are square numbers.
+// The function should be able to take any number of array elements.
+// Examples:
+// is_square([1, 4, 9, 16]) --> True
+// is_square([3, 4, 7, 9]) --> False
+// is_square([]) --> None
+const isSquare = (arr) => {
+  //Your code here
+  return arr.length &&
+    arr.map((x) => (Math.sqrt(x) % 1 !== 0 ? false : true)).includes(false)
+    ? false
+    : true;
+};
+console.log("isSquare ", isSquare([3, 4, 9, 16]));
+
+// CHALLENGE 57
+// Return an output string that translates an input string s/$s by replacing each character in s/$s with a number
+// representing the number of times that character occurs in s/$s and separating each number with the character(s) sep/$sep.
+// freq_seq("hello world", "-"); // => "1-1-3-3-2-1-1-2-1-3-1"
+// freq_seq("19999999", ":"); // => "1:7:7:7:7:7:7:7"
+// freq_seq("^^^**$", "x"); // => "3x3x3x2x2x1"
+const freqSeq = (str, sep) => {
+  let a = str.split("").filter((x) => x !== " ");
+  let b = {};
+  a.forEach((x) => {
+    if (b[x]) {
+      b[x]++;
+    } else {
+      b[x] = 1;
+    }
+  });
+  console.log(str, b);
+};
+console.log("freqSeq ", freqSeq("hello world", "-"));
+
+// CHALLENGE 58
+// Simple challenge - eliminate all bugs from the supplied code so that the code runs and outputs the expected value.
+// Output should be the length of the longest word, as a number.
+// There will only be one 'longest' word.
+const findLongest = (str) => {
+  let spl = str.split(" ");
+  let longest = 0;
+  spl.map((i) => {
+    if (i.length > longest) {
+      longest = i.length;
+    }
+  });
+  return longest;
+};
+console.log(
+  "findLongest ",
+  findLongest("The quick white fox jumped around the massive dog")
+);
+
+// CHALLENGE 59
+// Write a function that when given a URL as a string, parses out just the domain name and returns it as a string.
+// For example:
+// domainName("http://github.com/carbonfive/raygun") == "github"
+// domainName("http://www.zombie-bites.com") == "zombie-bites"
+// domainName("https://www.cnet.com") == "cnet"
+const domainName = (url) => {
+  //your code here
+  if (url.includes("www.")) {
+    return url.slice(url.indexOf(".") + 1, url.lastIndexOf("."));
+  } else if (url.includes("http")) {
+    // if doesnt contain www
+    let urls;
+    urls = url.slice(4, url.length);
+    urls = "http://" + urls;
+    let urlHostnames = new URL(urls).hostname;
+    return urlHostnames.slice(0, urlHostnames.indexOf("."));
+  } else if (!url.includes("http")) {
+    let urlz;
+    urlz = "http://" + url;
+    let urlHostnamez = new URL(urlz).hostname;
+    return urlHostnamez.slice(0, urlHostnamez.indexOf("."));
+  }
+};
+console.log("domainName ", domainName("://www.xakep.ru"));
+
+// CHALLENGE 60
+// I will give you an integer.
+// Give me back a shape that is as long and wide as the integer.
+// The integer will be a whole number between 1 and 50.
+// Example
+// n = 3, so I expect a 3x3 square back just like below as a string:
+// +++
+// +++
+// +++
+const generateShape = (integer) => {
+  let shape = "";
+  for (let i = 0; i < integer; i++) {
+    for (let j = 0; j < integer; j++) {
+      shape += "+";
+    }
+    if (i < integer - 1) {
+      shape += "\n";
+    }
+  }
+  return shape;
+};
+console.log("generateShape ", generateShape(3));
+
+// CHALLENGE 61
+// Complete the solution so that it reverses all of the words within the string passed in.
+// Example:
+// "The greatest victory is that which requires no battle"
+// -->
+// "battle no requires which that is victory greatest The"
+const reverseWords = (str) => {
+  return str.split(" ").reverse().join(" ");
+};
+console.log(
+  "reverseWords ",
+  reverseWords("The greatest victory is that which requires no battle")
+);
+
+// CHALLENGE 62
+// Write a function that accepts two arguments: an array/list of integers and another integer (n).
+// Determine the number of times where two integers in the array have a difference of n.
+// For example:
+// [1, 1, 5, 6, 9, 16, 27], n=4  -->  3  # (1,5), (1,5), (5,9)
+// [1, 1, 3, 3], n=2             -->  4  # (1,3), (1,3), (1,3), (1,3)
+const intDiff = (arr, n) => {
+  const perechi = [];
+  for (let i = 0; i < arr.length - 1; i++) {
+    let store = arr[i];
+    for (let j = i + 1; j < arr.length; j++) {
+      if (Math.abs(arr[j] - store) === n) {
+        perechi.push([i, j]);
+      }
+    }
+  }
+  return perechi.length;
+};
+console.log("intDiff ", intDiff([1, 1, 5, 6, 9, 16, 27], 4));
+
+// CHALLENGE 63
+// Write a function that reverses the bits in an integer.
+// For example, the number 417 is 110100001 in binary.
+// Reversing the binary is 100001011 which is 267.
+// You can assume that the number is not negative.
+const reverseBits = (n) => {
+  // your code here
+  const reversedBinary = n.toString(2).split("").reverse().join("");
+  return parseInt(reversedBinary, 2);
+};
+console.log("reverseBits ", reverseBits(1024));
+
+// CHALLENGE 64
+// Given a positive integer n: 0 < n < 1e6,
+// remove the last digit until you're left with a number that is a multiple of three.
+// Return n if the input is already a multiple of three,
+// and return null/nil/None/-1 if no such number exists.
+// 1      => null
+// 25     => null
+// 36     => 36
+// 1244   => 12
+// 952406 => 9
+const prevMultOfThree = (n) => {
+  //your solution
+  const str = n.toString().split("").reverse("").join("");
+  for (let i = 0; str.length; i++) {
+    if ((str.slice(i).split("").reverse("").join("") * 1) % 3 === 0) {
+      if (str.slice(i).split("").reverse("").join("") * 1 === 0) {
+        return null;
+      }
+      return str.slice(i).split("").reverse("").join("") * 1;
+    }
+  }
+  return null;
+};
+console.log("prevMultOfThree ", prevMultOfThree(1));
+
+// CHALLENGE 65
+// Character with longest consecutive repetition
+// For a given string s find the character c (or C) with longest consecutive repetition and return:
+// [c, l]
+// where l (or L) is the length of the repetition.
+// If there are two or more characters with the same l return the first in order of appearance.
+// For empty string return:
+// ["", 0]
+// In JavaScript: If you use Array.sort in your solution,
+// you might experience issues with the random tests as Array.sort is not stable in the Node.js version used by CodeWars.
+// This is not a kata issue.
+// Happy coding! :)
+const longestRepetition = (s) => {
+  if (s.length === 0) {
+    return ["", 0];
+  } else if (s.length === 1) {
+    return [s, 1];
+  } else {
+    let maxDetected = 1;
+    let presentChar = "";
+    let presentCount = 0;
+    let answer = [s[0], 1]; // first Character
+    for (let i = 0; i < s.length - 1; i++) {
+      presentChar = s[i];
+      presentCount = 1;
+      for (let j = i + 1; j < s.length; j++) {
+        if (s[j] === s[i]) {
+          presentCount += 1;
+        } else {
+          break;
+        }
+      }
+      if (presentCount > maxDetected) {
+        maxDetected = presentCount;
+        answer[0] = presentChar;
+        answer[1] = maxDetected;
+      }
+    }
+    return answer;
+  }
+};
+console.log("longestRepetition ", longestRepetition("aabbb"));
+
+// CHALLENGE 66
+// Reverse a Number
+// Given a number, write a function to output its reverse digits. (e.g. given 123 the answer is 321)
+// Numbers should preserve their sign; i.e. a negative number should still be negative when reversed.
+// Examples
+//  123 ->  321
+// -456 -> -654
+// 1000 ->    1
+const reverseNumber = (n) => {
+  return parseFloat(String(n).split("").reverse("").join("")) * Math.sign(n);
+};
+console.log("reverseNumber ", reverseNumber(1000));
+
+// CHALLENGE 67
+// Narcissistic Numbers
+// A Narcissistic Number is a number of length n in which the sum of its digits to the power of n is equal to the original number.
+// If this seems confusing, refer to the example below.
+// Ex: 153, where n = 3 (number of digits in 153)
+// 13 + 53 + 33 = 153
+const isNarcissistic = (n) => {
+  //your code here
+  console.log("original number ", n);
+  let strn = n.toString();
+  let num = {};
+  for (let i = 0; i < strn.length; i++) {
+    if (num[i] === undefined) {
+      num[i] = strn[i];
+    }
+  }
+
+  const poweredNums = Object.values(num)
+    .map((el, ind, arr) => Math.pow(el, arr.length))
+    .reduce((a, b) => a + b, 0);
+  console.log("poweredNums ", poweredNums);
+  return poweredNums === n ? true : false;
+};
+console.log("isNarcissistic ", isNarcissistic(435));
+
+// CHALLENGE 68
+// Single digit
+// The goal of this Kata is to reduce the passed integer to a single digit (if not already) by converting the number to binary,
+//taking the sum of the binary digits, and if that sum is not a single digit then repeat the process.
+//     If the passed integer is already a single digit there is no need to reduce
+//     n will be an integer such that 0 < n < 10⁹
+// For example given 5665 the function should return 5:
+// 5665 --> (binary) 1011000100001
+// 1011000100001 --> (sum of binary digits) 5
+// Given 123456789 the function should return 1:
+// 123456789 --> (binary) 111010110111100110100010101
+// 111010110111100110100010101 --> (sum of binary digits) 16
+// 16 --> (binary) 10000
+// 10000 --> (sum of binary digits) 1
+const singleDigit = (n) => {
+  return n
+    .toString(2)
+    .split("")
+    .filter((val) => val >= 1)
+    .reduce((prev, acc) => +prev + +acc, 0);
+};
+console.log("singleDigit ", singleDigit(999));
+
+// CHALLENGE 69
+// Multiples of 3 or 5
+// If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+// Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
+// Additionally, if the number is negative, return 0 (for languages that do have them).
+// Note: If the number is a multiple of both 3 and 5, only count it once.
+
+const multiplesOf3Or5 = (number) => {
+  let a = 0;
+  for (let i = 0; i < number; i++) {
+    //console.log(number, i, number[i]);
+    number < 0 ? 0 : i % 3 === 0 || i % 5 === 0 ? (a += i) : a;
+  }
+  return a;
+  //return a.forEach((acc, curr) => acc + curr);
+};
+console.log("multiplesOf3Or5 ", multiplesOf3Or5(10, 23));
+
+// CHALLENGE 70
+// Perfect powers are numbers that can be written mkm^kmk, where mmm and kkk are both integers greater than 1.
+// Your task is to write a function that returns the perfect power nearest any number.
+// Notes
+//     When the input itself is a perfect power, return this number
+//     Since 4 is the smallest perfect power, for inputs < 4 (including 0, 1, and negatives) return 4
+//     The input can be either a floating-point number or an integer
+//     If there are two perfect powers equidistant from the input, return the smaller one
+
+// Examples
+// For instance,
+//  0  -->   4
+// 11  -->   9    #  9 = 3^2
+// 34  -->  32    # 32 = 2^5 and 36 = 6^2 --> same distance, pick the smaller
+const closestPower = (n) => {
+  //Here we go...
+  if (n < 4) {
+    return 4;
+  }
+  console.log("number ", n);
+  const roundedPower = Math.round(Math.log2(n));
+  if (Math.pow(2, roundedPower) && Math.pow(roundedPower, 2) === n) {
+    return n;
+  }
+  console.log(
+    roundedPower,
+    Math.pow(2, roundedPower),
+    Math.pow(roundedPower, 2)
+  );
+
+  const abovePower = Math.pow(roundedPower, 2);
+  const lowerPower = Math.pow(2, roundedPower);
+  const aboveBeforePower = Math.pow(roundedPower + 1, 2);
+  const lowerBeforePower = Math.pow(roundedPower - 1, 2);
+  const aboveAfterPower = Math.pow(2, roundedPower + 1);
+  const lowerAfterPower = Math.pow(2, roundedPower - 1);
+  console.log(
+    aboveBeforePower,
+    lowerBeforePower,
+    aboveAfterPower,
+    lowerAfterPower
+  );
+  console.log(
+    Math.abs(aboveBeforePower - n),
+    Math.abs(lowerBeforePower - n),
+    Math.abs(aboveAfterPower - n),
+    Math.abs(lowerAfterPower - n)
+  );
+  const minimum = Math.min(
+    Math.abs(abovePower - n),
+    Math.abs(lowerPower - n),
+    Math.abs(aboveBeforePower - n),
+    Math.abs(lowerBeforePower - n),
+    Math.abs(aboveAfterPower - n),
+    Math.abs(lowerAfterPower - n)
+  );
+  console.log(minimum, "minimum ");
+  return minimum === Math.abs(aboveBeforePower - n)
+    ? aboveBeforePower
+    : minimum === Math.abs(lowerBeforePower - n)
+    ? lowerBeforePower
+    : minimum === Math.abs(aboveAfterPower - n)
+    ? aboveAfterPower
+    : minimum === Math.abs(lowerAfterPower - n)
+    ? lowerAfterPower
+    : minimum === Math.abs(abovePower - n)
+    ? abovePower
+    : lowerPower;
+};
+console.log("closestPower ", closestPower(9));
+
+// CHALLENGE 71
+// Maximum Product
+// Task
+// Given an array of integers , Find the maximum product obtained from multiplying 2 adjacent numbers in the array.
+// Notes
+//     Array/list size is at least 2.
+//     Array/list numbers could be a mixture of positives, negatives also zeroes .
+
+// Input >> Output Examples
+// adjacentElementsProduct([1, 2, 3]); ==> return 6
+// Explanation:
+//     The maximum product obtained from multiplying 2 * 3 = 6, and they're adjacent numbers in the array.
+// adjacentElementsProduct([9, 5, 10, 2, 24, -1, -48]); ==> return 50
+// Explanation:
+// Max product obtained from multiplying 5 * 10 = 50 .
+// adjacentElementsProduct([-23, 4, -5, 99, -27, 329, -2, 7, -921])  ==>  return -14
+// Explanation:
+//     The maximum product obtained from multiplying -2 * 7 = -14, and they're adjacent numbers in the array.
+const adjacentElementsProduct = (array) => {
+  // max product
+  // const firstMax = Math.max(...array);
+  // const secondMax = Math.max(...array.filter((i) => i !== firstMax));
+  // console.log(firstMax, secondMax, firstMax * secondMax);
+  let max = -Infinity;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] * array[i + 1] > max) {
+      max = array[i] * array[i + 1];
+    }
+  }
+  return max;
+};
+console.log(
+  "adjacentElementsProduct ",
+  adjacentElementsProduct([-23, 4, -5, 99, -27, 329, -2, 7, -921])
+);
+
+// CHALLENGE 72
+// Calculate BMI
+// Write function bmi that calculates body mass index (bmi = weight / height2).
+// if bmi <= 18.5 return "Underweight"
+// if bmi <= 25.0 return "Normal"
+// if bmi <= 30.0 return "Overweight"
+// if bmi > 30 return "Obese"
+const bmi = (weight, height) => {
+  const bmiCalculate = weight / height ** 2;
+  return bmiCalculate <= 18.5
+    ? "Underweight"
+    : bmiCalculate <= 25.0
+    ? "Normal"
+    : bmiCalculate <= 30.0
+    ? "Overweight"
+    : "Obese";
+};
+console.log("bmi ", bmi(80, 1.8));
+
+// CHALLENGE 73
+// Drink about
+// Kids drink toddy.
+// Teens drink coke.
+// Young adults drink beer.
+// Adults drink whisky.
+// Make a function that receive age, and return what they drink.
+// Rules:
+// Children under 14 old.
+// Teens under 18 old.
+// Young under 21 old.
+// Adults have 21 or more.
+// Examples: (Input --> Output)
+// 13 --> "drink toddy"
+// 17 --> "drink coke"
+// 18 --> "drink beer"
+// 20 --> "drink beer"
+// 30 --> "drink whisky"
+
+const peopleWithAgeDrink = (old) => {
+  return old < 14
+    ? "drink toddy"
+    : old < 18
+    ? "drink coke"
+    : old < 21
+    ? "drink beer"
+    : "drink whisky";
+};
+console.log("peopleWithAgeDrink ", peopleWithAgeDrink(80));
+
+// CHALLENGE 73
+// Special Number (Special Numbers Series #5)
+// A number is a Special Number if it’s digits only consist 0, 1, 2, 3, 4 or 5
+// Given a number determine if it special number or not .
+const specialNumber = (n) => {
+  //your code here
+  return String(n)
+    .split("")
+    .every((num) => Number(num) <= 5)
+    ? "Special!!"
+    : "NOT!!";
+};
+console.log("specialNumber ", specialNumber(26));
+
+// CHALLENGE 74
+// Balanced Number (Special Numbers Series #1 )
+// Balanced number is the number that * The sum of all digits to the left of the middle digit(s) and the sum of all digits to the right of the middle digit(s) are equal*.
+// Task
+// Given a number, Find if it is Balanced or not.
+const balancedNum = (number) => {
+  console.log(number);
+  return "Do your magic!";
+};
+console.log("balancedNum ", balancedNum(26));
+
+// CHALLENGE 75
+// Strong number is the number that the sum of the factorial of its digits is equal to number itself.
+// For example: 145, since
+// 1! + 4! + 5! = 1 + 24 + 120 = 145
+const factorialize = (num) => {
+  if (num < 0) return -1;
+  else if (num == 0) return 1;
+  else {
+    return num * factorialize(num - 1);
+  }
+};
+const strong = (n) => {
+  return String(n)
+    .split("")
+    .reduce(
+      (previousValue, currentValue) =>
+        Number(previousValue) + factorialize(Number(currentValue)),
+      0
+    ) === n
+    ? "STRONG!!!!"
+    : "Not Strong !!";
+};
+console.log("strong ", strong(145));
+
+// CHALLENGE 76
+//Disarium number is the number that The sum of its digits powered
+//with their respective positionsis equal to the number itself.
+const disariumNumber = (n) => {
+  //your code here
+  const arrayedPowerNumbers = String(n)
+    .split("")
+    .map((element, index) => Math.pow(Number(element), index + 1));
+  return arrayedPowerNumbers.reduce((a, b) => a + b) === n
+    ? "Disarium !!"
+    : "Not !!";
+};
+console.log("disariumNumber ", disariumNumber(136586));
+
+// CHALLENGE 77
+// Jumping Number (Special Numbers Series #4)
+// Jumping number is the number that All adjacent digits in it differ by 1.
+const jumpingNumber = (n) => {
+  //your code here
+  const str = n.toString();
+  if (str.length === 1) {
+    return "Jumping!!";
+  }
+  let i = 0;
+  console.log(str);
+  // for (let i = 0; i < str.length; i++) {
+  //   return Math.abs(Number(str[i]) - Number(str[i + 1])) === 1
+  //     ? "Jumping!!"
+  //     : "Not!!";
+  // }
+  while (i < str.length - 1) {
+    console.log(str[i]);
+    if (Math.abs(+str[i] - +str[i + 1] === 1)) {
+      i += 1;
+    } else {
+      return "Not!!";
+    }
+  }
+  return "Jumping!!";
+};
+console.log("jumpingNumber ", jumpingNumber(23));
+
+// CHALLENGE 78
+// Get the list of integers for Codewars Leaderboard score (aka Honor) in descending order
+// Note:
+// if it was the bad timing, the data could be updated during your test cases.
+// Try several times if you had such experience.
+
+const getLeaderboardHonor = async () => {
+  // your code goes here
+  try {
+    const URL = "https://www.codewars.com/users/leaderboard";
+    const request = await fetch(URL);
+    const result = await request.json();
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+console.log("getLeaderboardHonor ", getLeaderboardHonor());
+
+// CHALLENGE 79
+// Compare powers
+// You certainly can tell which is the larger number between 210 and 215.
+// But what about, say, 210 and 310? You know this one too.
+// Things tend to get a bit more complicated with both different bases and exponents: which is larger between 39 and 56?
+// Well, by now you have surely guessed that you have to build a function to compare powers, returning -1 if the first member is larger,
+// 0 if they are equal, 1 otherwise;
+// powers to compare will be provided in the [base, exponent] format:
+// comparePowers([2,10],[2,15])===1
+// comparePowers([2,10],[3,10])===1
+// comparePowers([2,10],[2,10])===0
+// comparePowers([3,9],[5,6])===-1
+// comparePowers([7,7],[5,8])===-1
+// Only positive integers will be tested, incluing bigger numbers - you are warned now,
+// so be diligent try to implement an efficient solution not to drain too much on CW resources ;)!
+const comparePowers = (n1, n2) => {
+  //your code here
+  console.log(n1, n2, Math.pow(n1[0], n1[1]), Math.pow(n2[0], n2[1]));
+  return Math.pow(n1[0], n1[1]) > Math.pow(n2[0], n2[1])
+    ? -1
+    : Math.pow(n1[0], n1[1]) < Math.pow(n2[0], n2[1])
+    ? 1
+    : 0;
+};
+console.log("comparePowers ", comparePowers([3, 9], [5, 6]));
+
+// CHALLENGE 80
+// Pick peaks
+// In this kata, you will write a function that returns the positions and
+// the values of the "peaks" (or local maxima) of a numeric array.
+// For example, the array arr = [0, 1, 2, 5, 1, 0] has a peak at position 3 with a value of 5 (since arr[3] equals 5).
+// The output will be returned as an object with two properties:
+// pos and peaks. Both of these properties should be arrays. If there is no peak in the given array,
+// then the output should be {pos: [], peaks: []}.
+const pickPeaks = (arr) => {
+  let result = { pos: [], peaks: [] };
+  for (let i = 1; i < arr.length; i++) {
+    var position;
+    if (arr[i] > arr[i - 1]) {
+      position = i;
+    } else if (arr[i] < arr[i - 1] && position) {
+      result.pos.push(position);
+      result.peaks.push(arr[position]);
+      position = undefined;
+    }
+  }
+  return result;
+  //  return {pos:[],peaks:[]}
+};
+console.log(
+  "pickPeaks ",
+  pickPeaks([
+    1, 2, 5, 4, 3, 2, 3, 6, 4, 1, 2, 3, 3, 4, 5, 3, 2, 1, 2, 3, 5, 5, 4, 3,
+  ])
+);
+
+
+
+const arrayOfNumbers = [5, 4, 1, 4, 5, 2, 3, 11, 11, 1 , 3, 5, 5];
+let outputz = {};
+for(let i = 0; i <= arrayOfNumbers.length; i++){
+  if (outputz[arrayOfNumbers[i]] === undefined) {
+    console.log('undefined ');
+    outputz[arrayOfNumbers[i]] = 1;
+  } else {
+    outputz[arrayOfNumbers[i]] += 1;
+  }
+}
+
+let outputzi = {};
+
+arrayOfNumbers.forEach((cur) => {
+      console.log('forEACH', cur);
+      if (outputzi[cur] === undefined) {
+        outputzi[cur] = 1;
+        console.log('outputzi', outputzi, outputzi[cur]);
+      } else {
+        outputzi[cur] += 1;
+      }
+});
+console.log('arrayOfNumbers => ', outputzi);
+console.log('arrayOfNumbers => ', arrayOfNumbers, outputz);
